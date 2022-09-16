@@ -1,0 +1,7 @@
+get-recommendations-filter-controller
+
+paginación el poder ir a la página siguiente, anterior, primera o última para ello es necesario hacer la primera búsqueda en postman y luego hacer ctrl + click en postman el enlace de página anterior o siguiente
+
+index.js
+añadimos app.use(cors()); para que se pueda conectar correctamente con el frontend
+
