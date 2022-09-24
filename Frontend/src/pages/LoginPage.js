@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import { loginUserService } from "../services";
 
 export const LoginPage = () => {
   const [password, setPassLog] = useState("");
   const [email, setEmailLog] = useState("");
   const [error, setError] = useState("");
+  const { setToken } = useContext(AuthContext); //asi se llama al contexto, desestructuramos el setToken,se llama al useContext(es asi y punto) y llamamos al objeto global creado en el context
   const handleLog = async (e) => {
     e.preventDefault();
     setError("");
     try {
       const data = await loginUserService({ email, password });
-      console.log(data);
+      setToken(data);
     } catch (error) {}
   };
   return (

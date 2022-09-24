@@ -25,7 +25,7 @@ export const loginUserService = async ({ email, password }) => {
   });
   const json = await response.json();
   //pendiente de meterle un error si no deja crearla
-  return json.data;
+  return json.accessToken;
 };
 // en este archivo vamos a crear todas las funciones asíncronas que se encarguen de la comunicación con la base de datos
 
@@ -55,4 +55,3 @@ export const getSingleRecommendationService = async (id) => {
   }
   return json[0];
 };
-
