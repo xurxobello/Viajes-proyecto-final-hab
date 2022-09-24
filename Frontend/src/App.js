@@ -15,8 +15,9 @@ function App() {
       <Routes>
         {/* OJO!!! NO SE COMO HACER QUE LA RUTA INICIAL SEA /api/recommendations */}
         <Route index path="/api/recommendations" element={<HomePage />} />
-        <Route path="/api/auth" element={<LoginPage />} />
-        <Route path="/api/accounts" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registro" element={<RegisterPage></RegisterPage>} />
+
         <Route
           path="/api/recommendations/:id"
           element={<RecommendationPage />}

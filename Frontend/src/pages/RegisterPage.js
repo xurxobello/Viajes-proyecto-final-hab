@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { registerUserService } from "../services";
 
 function RegisterPage() {
+  const navigate = useNavigate(); //el navigate lo que te permite es redireccionar a otra pagina
   const [name, setName] = useState("");
   const [email, setEmail] = useState(""); //estado para el email
   const [password, setPass] = useState(""); //estado para la pass
@@ -16,6 +18,7 @@ function RegisterPage() {
       return;
     }
     try {
+      navigate("/login");
       await registerUserService({ name, email, password });
     } catch (error) {}
   };
