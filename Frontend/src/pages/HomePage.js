@@ -10,7 +10,7 @@ function HomePage() {
   return (
     <section>
       <h2>Recomendaciones</h2>
-      <RecommendationsList recommendations={recommendations} />
+      {<RecommendationsList recommendations={recommendations} />}
     </section>
   );
 }
