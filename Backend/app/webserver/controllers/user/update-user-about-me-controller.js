@@ -5,41 +5,43 @@ const mysqlPool = require("../../../database/mysql-pool");
 
 async function validate(payload) {
   const schema = Joi.object({
-    name: Joi.string().max(255).required(),
+    about_me: Joi.string().max(255),
   });
 
   Joi.assert(payload, schema);
 }
 
-async function updateUser(req, res) {
+async function updateUserAboutMe(req, res) {
   const { userId } = req.claims;
-  const name = req.body.name;
+  const about_me = req.body.about_me;
+
+  console.log(about_me);
 
   // Validar datos
   try {
     const payload = {
-      name,
+      about_me,
     };
 
     await validate(payload);
   } catch (e) {
     return res.status(400).send({
-      message: `Debes introducir un NOMBRE que no exceda de los 255 caracteres`,
+      message: `Debes introducir un SOBRE MI que no exceda de los 255 caracteres`,
     });
   }
 
   // Actualizar datos usuario
   let connection = null;
   const query = `UPDATE users
-    SET name = ?
+    SET about_me = ?
     WHERE id = ?`;
 
   try {
     connection = await mysqlPool.getConnection();
-    await connection.query(query, [name, userId]);
+    await connection.query(query, [about_me, userId]);
     connection.release();
     return res.status(200).send({
-      message: `Nombre de usuario modificado correctamente`,
+      message: `SOBRE MI modificado correctamente`,
     });
   } catch (e) {
     if (connection) {
@@ -52,4 +54,7 @@ async function updateUser(req, res) {
   }
 }
 
-module.exports = updateUser;
+module.exports = updateUserAboutMe;
+
+// UPDATE `augustproject`.`users` SET `about_me` = 'hola caracola' WHERE (`id` = '1');
+// UPDATE `augustproject`.`users` SET `name` = 'xurxo8' WHERE (`id` = '1');
