@@ -1,43 +1,41 @@
-'use strict'
+"use strict";
 
-const Chance = require('chance');
+const Chance = require("chance");
 const dotenv = require("dotenv");
-const mysql = require('mysql2/promise');
+const mysql = require("mysql2/promise");
 
 const chance = new Chance();
 dotenv.config();
 
-const {
-    MYSQL_HOST,
-    MYSQL_USER,
-    MYSQL_PASSWORD,
-    MYSQL_PORT,
-    MYSQL_DATABASE,
-} = process.env;
-
+const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_PORT, MYSQL_DATABASE } =
+  process.env;
 
 async function main() {
-    try {
+  try {
     //nos conectamos a la base de datos
     const connection = await mysql.createConnection({
-    host: MYSQL_HOST,
-    user: MYSQL_USER,
-    password: MYSQL_PASSWORD,
-    port: MYSQL_PORT,
-    database: MYSQL_DATABASE,
-    timezone: 'Z',
+      host: MYSQL_HOST,
+      user: MYSQL_USER,
+      password: MYSQL_PASSWORD,
+      port: MYSQL_PORT,
+      database: MYSQL_DATABASE,
+      timezone: "Z",
     });
-    console.log('Borrando tablas');
+    console.log("Borrando tablas");
     // borramos las tablas creadas en la base de datos
-    await connection.query('DROP TABLE IF EXISTS users, recommendations, comments, likes');
+    await connection.query(
+      "DROP TABLE IF EXISTS users, recommendations, comments, likes"
+    );
 
-    console.log('Creando tablas');
+    console.log("Creando tablas");
 
     // creamos la tabla users
     await connection.query(`
         CREATE TABLE users(
         id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(255) NOT NULL,
+        nick VARCHAR(255) UNIQUE NOT NULL,
+        about_me VARCHAR(255) NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         password CHAR(60) NOT NULL,
         created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -45,7 +43,7 @@ async function main() {
         );
     `);
 
-        // creamos la tabla recommendations
+    // creamos la tabla recommendations
     await connection.query(`
         CREATE TABLE recommendations(
         id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -89,63 +87,69 @@ async function main() {
     const FAKE_USERS = 20;
 
     for (let index = 0; index < FAKE_USERS; index++) {
-        await connection.query(`INSERT INTO users(name, email, password, created_at) VALUES(?, ?, ?, ?)`,
-            [
-            chance.name(),
-            chance.email(),
-            chance.string({ length: 10, alpha: true, numeric: true }),
-            chance.date({ year: 2022 }),
-            ]
-        );
-    };
+      await connection.query(
+        `INSERT INTO users(name, nick, about_me, email, password, created_at) VALUES(?, ?, ?, ?, ?, ?)`,
+        [
+          chance.name(),
+          chance.sentence({ words: 1 }),
+          chance.sentence({ words: 12 }),
+          chance.email(),
+          chance.string({ length: 10, alpha: true, numeric: true }),
+          chance.date({ year: 2022 }),
+        ]
+      );
+    }
 
     const FAKE_RECOMMENDATIONS = 30;
 
     for (let index = 0; index < FAKE_RECOMMENDATIONS; index++) {
-        await connection.query(`INSERT INTO recommendations(title, category, place, intro, content, photo, created_at, user_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`,
-            [
-            chance.sentence({ words: 7 }),
-            chance.sentence({ words: 2 }),
-            chance.string({length: 10}),
-            chance.sentence({ words: 10 }),
-            chance.paragraph({ sentences: 15 }),
-            `${chance.string({length: 15})}.jpg`,
-            chance.date({ year: 2022 }),
-            chance.integer({ min: 1, max: FAKE_USERS }),
-            ]
-        );
-    };
+      await connection.query(
+        `INSERT INTO recommendations(title, category, place, intro, content, photo, created_at, user_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          chance.sentence({ words: 7 }),
+          chance.sentence({ words: 2 }),
+          chance.string({ length: 10 }),
+          chance.sentence({ words: 10 }),
+          chance.paragraph({ sentences: 15 }),
+          `${chance.string({ length: 15 })}.jpg`,
+          chance.date({ year: 2022 }),
+          chance.integer({ min: 1, max: FAKE_USERS }),
+        ]
+      );
+    }
 
     const FAKE_COMMENTS = 40;
 
     for (let index = 0; index < FAKE_COMMENTS; index++) {
-        await connection.query(`INSERT INTO comments(content, created_at, user_id, recommendation_id) VALUES(?, ?, ?, ?)`,
-            [
-            chance.sentence({ words: 20 }),
-            chance.date({ year: 2022 }),
-            chance.integer({ min: 1, max: FAKE_USERS }),
-            chance.integer({ min: 1, max: FAKE_RECOMMENDATIONS }),
-            ]
-        );
-    };
+      await connection.query(
+        `INSERT INTO comments(content, created_at, user_id, recommendation_id) VALUES(?, ?, ?, ?)`,
+        [
+          chance.sentence({ words: 20 }),
+          chance.date({ year: 2022 }),
+          chance.integer({ min: 1, max: FAKE_USERS }),
+          chance.integer({ min: 1, max: FAKE_RECOMMENDATIONS }),
+        ]
+      );
+    }
 
     const FAKE_LIKES = 20;
 
     for (let index = 0; index < FAKE_LIKES; index++) {
-        await connection.query(`INSERT INTO likes(user_id, recommendation_id) VALUES(?, ?)`,
-            [
-            chance.integer({ min: 1, max: FAKE_USERS }),
-            chance.integer({ min: 1, max: FAKE_RECOMMENDATIONS }),
-            ]
-        );
-    };
+      await connection.query(
+        `INSERT INTO likes(user_id, recommendation_id) VALUES(?, ?)`,
+        [
+          chance.integer({ min: 1, max: FAKE_USERS }),
+          chance.integer({ min: 1, max: FAKE_RECOMMENDATIONS }),
+        ]
+      );
+    }
 
     process.exit(0);
     //En caso de que haya un error lo lanzamos
-    } catch (error) {
+  } catch (error) {
     console.error(error);
     process.exit(1);
-    }
+  }
 }
 
 main();

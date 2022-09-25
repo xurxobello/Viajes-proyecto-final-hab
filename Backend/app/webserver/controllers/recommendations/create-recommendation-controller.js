@@ -8,7 +8,7 @@ const uuidv4 = require("uuid").v4;
 const mysqlPool = require("../../../database/mysql-pool");
 
 // marcamos los tipos de formato de imagenes que vamos a aceptar
-const validFormats = ["jpg", "jpeg", "png", "tiff", "bmp"];
+const validFormats = ["jpg", "jpeg", "png"];
 const maxImageWidth = 1000;
 
 // mainFolder nos indica la ruta en la que tenemos augustproject
