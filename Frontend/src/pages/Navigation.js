@@ -9,7 +9,7 @@ function Navigation() {
       <nav>
         <Link to="/">Home</Link>
         <br></br>
-        <Link to="/newPost">New post</Link>
+        <Link to="/newRecommendation">New recommendation</Link>
         <br></br>
         <Link to="/moreLikes">More likes</Link>
         <br></br>

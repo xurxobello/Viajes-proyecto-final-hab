@@ -8,7 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import RecommendationPage from "./pages/RecommendationPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navigation from "./pages/Navigation";
-import NewPostPage from "./pages/NewPostPage";
+import CreateRecommendationPage from "./pages/CreateRecommendationPage";
 import MoreLikesPage from "./pages/MoreLikesPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import AboutUsPage from "./pages/AboutUsPage";
@@ -22,7 +22,10 @@ function App() {
         <Route element={<Navigation />}>
           <Route index path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/newPost" element={<NewPostPage></NewPostPage>} />
+          <Route
+            path="/newRecommendation"
+            element={<CreateRecommendationPage></CreateRecommendationPage>}
+          />
           <Route path="/moreLikes" element={<MoreLikesPage></MoreLikesPage>} />
           <Route
             path="/categories"

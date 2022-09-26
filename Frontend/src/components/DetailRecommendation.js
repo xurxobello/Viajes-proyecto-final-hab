@@ -1,4 +1,5 @@
 function DetailRecommendation({ recommendation }) {
+  // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
   return (
     <article>
       <p>Título: {recommendation.title}</p>
