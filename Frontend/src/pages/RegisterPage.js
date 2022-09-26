@@ -5,9 +5,11 @@ import { registerUserService } from "../services";
 function RegisterPage() {
   const navigate = useNavigate(); //el navigate lo que te permite es redireccionar a otra pagina
   const [name, setName] = useState("");
+  const [nick, setNickName] = useState("");
   const [email, setEmail] = useState(""); //estado para el email
   const [password, setPass] = useState(""); //estado para la pass
   const [passRepeat, setPassRepeat] = useState(""); //estado para la pass repetica
+  const [about_me, setAbout] = useState("");
   const [error, setError] = useState("");
 
   const handleForm = async (e) => {
@@ -19,7 +21,7 @@ function RegisterPage() {
     }
     try {
       navigate("/login");
-      await registerUserService({ name, email, password });
+      await registerUserService({ name, email, password, nick, about_me });
     } catch (error) {}
   };
   return (
@@ -36,6 +38,15 @@ function RegisterPage() {
             name="name"
             required
             onChange={(e) => setName(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
+          ></input>
+        </fieldset>
+        <fieldset>
+          <label htmlFor="nick">NICKNAME</label>
+          <input
+            id="nick"
+            name="nick"
+            required
+            onChange={(e) => setNickName(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
           ></input>
         </fieldset>
         <fieldset>
@@ -66,6 +77,15 @@ function RegisterPage() {
             name="passwordRepeat"
             required
             onChange={(e) => setPassRepeat(e.target.value)}
+          ></input>
+        </fieldset>
+        <fieldset>
+          <label htmlFor="abot_me">ABOUT ME</label>
+          <input
+            type="text"
+            id="about_me"
+            name="about_me"
+            onChange={(e) => setAbout(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
           ></input>
         </fieldset>
         <button>registrate</button>

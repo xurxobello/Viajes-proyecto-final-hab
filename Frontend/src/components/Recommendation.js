@@ -4,7 +4,7 @@ function Recommendation({ recommendation }) {
       {recommendation.photo ? (
         <img
           // OJO!!!  Debajo no debe ir el número 23, sino el :id del user
-          src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/1/${recommendation.photo}`}
+          src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/2/${recommendation.photo}`}
           alt={recommendation.intro}
         />
       ) : null}

@@ -1,4 +1,10 @@
-export const registerUserService = async ({ name, email, password }) => {
+export const registerUserService = async ({
+  name,
+  email,
+  password,
+  nick,
+  about_me,
+}) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/accounts`,
     {
@@ -7,7 +13,7 @@ export const registerUserService = async ({ name, email, password }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password, nick, about_me }),
     }
   );
   const json = await response.json();
@@ -28,6 +34,22 @@ export const loginUserService = async ({ email, password }) => {
   return json.accessToken;
 };
 // en este archivo vamos a crear todas las funciones asíncronas que se encarguen de la comunicación con la base de datos
+
+export const getMyUserDataService = async ({ token }) => {
+  //peticion a la bd para detalles del usuario-->id,nick email...
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/users/detail`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const json = await response.json();
+  return json.data;
+};
 
 export const getAllRecommendationsService = async () => {
   const response = await fetch(

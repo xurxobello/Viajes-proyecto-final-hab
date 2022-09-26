@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loginUserService } from "../services";
 
@@ -7,13 +7,15 @@ export const LoginPage = () => {
   const [password, setPassLog] = useState("");
   const [email, setEmailLog] = useState("");
   const [error, setError] = useState("");
-  const { setToken } = useContext(AuthContext); //asi se llama al contexto, desestructuramos el setToken,se llama al useContext(es asi y punto) y llamamos al objeto global creado en el context
+  const { login } = useContext(AuthContext); //asi se llama al contexto, desestructuramos el login,se llama al useContext(es asi y punto) y llamamos al objeto global creado en el context
+  const navigate = useNavigate();
   const handleLog = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      const data = await loginUserService({ email, password });
-      setToken(data);
+      const data = await loginUserService({ email, password }); //en data esta el token
+      login(data); //esto me mete el token en el localStorage
+      navigate("/"); //cuando se ejecuta el evento te manda a la pagina pricipal
     } catch (error) {}
   };
   return (

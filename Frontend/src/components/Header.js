@@ -5,7 +5,7 @@ function Header() {
   return (
     <header>
       <h1>
-        <NavLink to="/api/recommendations">Viajes</NavLink>
+        <NavLink to="/">Home aqui ira una imagen</NavLink>
       </h1>
       <nav>
         <Auth />
