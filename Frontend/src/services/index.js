@@ -1,3 +1,5 @@
+// en este archivo vamos a crear todas las funciones asíncronas que se encarguen de la comunicación con la base de datos
+
 export const registerUserService = async ({
   name,
   email,
@@ -33,7 +35,6 @@ export const loginUserService = async ({ email, password }) => {
   //pendiente de meterle un error si no deja crearla
   return json.accessToken;
 };
-// en este archivo vamos a crear todas las funciones asíncronas que se encarguen de la comunicación con la base de datos
 
 export const getMyUserDataService = async ({ token }) => {
   //peticion a la bd para detalles del usuario-->id,nick email...
@@ -43,7 +44,7 @@ export const getMyUserDataService = async ({ token }) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
@@ -51,29 +52,55 @@ export const getMyUserDataService = async ({ token }) => {
   return json.data;
 };
 
+// esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
 export const getAllRecommendationsService = async () => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/recommendations`
   );
-
+  // gestionamos la respuesta de la base de datos transformándola a json
   const json = await response.json();
-  console.log(json);
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
   if (!response.ok) {
     throw new Error(json.message);
   }
+  // en caso de que no haya error obtenemos los datos que necesitamos
   // OJO!!! necesito recuperar más cosas de abajo!!!
   return json.recommendations;
 };
 
+// esta función se encarga de la petición mediante fetch a la base de datos para obtener la recomendación solicitada
 export const getSingleRecommendationService = async (id) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/recommendations/${id}`
   );
 
+  // gestionamos la respuesta de la base de datos transformándola a json
+  const json = await response.json();
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  // en caso de que no haya error obtenemos los datos que necesitamos
+  return json[0];
+};
+
+export const sendRecommendationService = async ({ data, token }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/recommendations`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   const json = await response.json();
 
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return json[0];
+  return json;
 };
