@@ -34,6 +34,7 @@ function App() {
             path="/api/recommendations/:id"
             element={<RecommendationPage />}
           />
+          <Route path="/registro" element={<RegisterPage></RegisterPage>} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
