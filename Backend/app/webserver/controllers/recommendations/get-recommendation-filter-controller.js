@@ -3,7 +3,7 @@
 const mysqlPool = require("../../../database/mysql-pool");
 
 // indicamos el número máximo de elementos que vamos a querer mostrar por página
-const maxRecommendationsPerPage = 4;
+const maxRecommendationsPerPage = 6;
 
 async function getPlaceOrCategoryRecommendations(req, res) {
   let connection = null;
