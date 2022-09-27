@@ -14,6 +14,7 @@ function DetailRecommendation({ recommendation }) {
 
     try {
       await commentUserService({ id, content, token });
+      e.target.reset();
     } catch (error) {}
   };
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
