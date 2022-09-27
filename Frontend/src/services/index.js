@@ -86,19 +86,26 @@ export const getSingleRecommendationService = async (id) => {
   return json[0];
 };
 
+// creamos un servicio que se encargará del envío del formulario de las recomendaciones en el que necesitaremos los datos del formulario (data) y también el token
 export const sendRecommendationService = async ({ data, token }) => {
   const response = await fetch(
+    // indicamos la ruta a la que debe hacer la petición
     `${process.env.REACT_APP_BACKEND}/api/recommendations`,
     {
+      // definimos el método que en este caso es POST
       method: "POST",
+      // en el body, al enviar un form-data, no tenemos que procesar de ninguna forma, sino que le pasamos directamente data que contiene los datos del formulario
       body: data,
+      // en headers necesitamos enviar el token, al gestionarlo en Backend con la palabra Bearer delante, lo enciamos de la siguiente manera
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
+  // gestionamos la respuesta de la base de datos transformándola a json
   const json = await response.json();
 
+  // gestionamos que debemos hacer en caso de que vuelva un error
   if (!response.ok) {
     throw new Error(json.message);
   }
