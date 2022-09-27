@@ -1,13 +1,23 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { commentUserService } from "../services";
 
 function DetailRecommendation({ recommendation }) {
   const { id } = useParams();
   console.log(id);
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const [content, setContent] = useState("");
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+
+    try {
+      await commentUserService({ id, content, token });
+    } catch (error) {}
+  };
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
-  const handleComent = () => {};
+
   return !user ? (
     <article>
       <p>Título: {recommendation.title}</p>
@@ -38,11 +48,12 @@ function DetailRecommendation({ recommendation }) {
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
       </article>
 
-      <form>
+      <form onSubmit={handleComment}>
         <fieldset>
           <label htmlFor="content">Comentario: </label>
           <textarea
             type="text"
+            onChange={(e) => setContent(e.target.value)}
             id="content"
             name="content"
             cols="40"
