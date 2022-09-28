@@ -6,7 +6,12 @@ import { commentUserService, getAllCommentsService } from "../services";
 
 function DetailRecommendation({ recommendation }) {
   const { id } = useParams();
+
   const [comments, setComments] = useState([]);
+
+  const { user, token } = useContext(AuthContext);
+
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     const getUserData = async () => {
@@ -19,10 +24,8 @@ function DetailRecommendation({ recommendation }) {
     };
     getUserData();
   }, []);
-
+  console.log(comments);
   console.log(id);
-  const { user, token } = useContext(AuthContext);
-  const [content, setContent] = useState("");
 
   const handleComment = async (e) => {
     e.preventDefault();
@@ -62,6 +65,10 @@ function DetailRecommendation({ recommendation }) {
         ) : null}
         <p>Contenido: {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
+        <p>
+          Autor:OJO AQUI ESTA MAL ,SALEN LOS DATOS DEL LOGADO NO DEL AUTOR{" "}
+          {user.nick}
+        </p>
       </article>
 
       <form onSubmit={handleComment}>
@@ -78,29 +85,21 @@ function DetailRecommendation({ recommendation }) {
         </fieldset>
         <button>enviar</button>
       </form>
-      {/*  <ul>
-      {comments.map((comment) => {
-        return (
-          <li key={com.id}>
-            
-          </li>
-        );
-      })}
-    </ul> */}
+      <ul>
+        {comments.map((comment) => {
+          return (
+            <li key={comment.id}>
+              Creado por:{user.nick}OJO AQUI ESTA MAL ,SALEN LOS DATOS DEL
+              LOGADO NO DEL AUTOR <br />
+              Creado el:
+              {new Date(comment.created_at).toLocaleDateString()}
+              <br />
+              {comment.content}
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
 export default DetailRecommendation;
-
-/* ul>
-      {recommendations.map((recommendation) => {
-        return (
-          <li key={recommendation.id}>
-            <NavLink to={`/api/recommendations/${recommendation.id}`}>
-              <Recommendation recommendation={recommendation} />
-            </NavLink>
-          </li>
-        );
-      })}
-    </ul>
- */

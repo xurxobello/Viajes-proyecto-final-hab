@@ -54,9 +54,15 @@ function CreateRecommendation() {
           <option value="" hidden>
             Selecciona...
           </option>
+          <option value="TurismoSolPlaya">Turismo de sol y playa</option>
+
+          <option value="TurismoRural">Turismo rural</option>
+          <option value="TurismoGastronómico">Turismo gastronómico</option>
+          <option value="TurismoNaturaleza">Turismo de naturaleza.</option>
+          <option value="TurismoCultural">Turismo cultural.</option>
           <option value="Paisajes">Paisajes</option>
           <option value="Monumentos">Monumentos</option>
-          <option value="Comida">Comida</option>
+
           <option value="Otros">Otros</option>
         </select>
       </fieldset>

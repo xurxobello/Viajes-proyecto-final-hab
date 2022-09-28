@@ -1,4 +1,6 @@
 function Recommendation({ recommendation }) {
+  
+  
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos, en este caso la foto, la categoría y una introducción.
   return (
     <article>
@@ -11,6 +13,7 @@ function Recommendation({ recommendation }) {
       ) : null}
       <p>Categoría: {recommendation.category}</p>
       <p>Introducción: {recommendation.intro}</p>
+
     </article>
   );
 }

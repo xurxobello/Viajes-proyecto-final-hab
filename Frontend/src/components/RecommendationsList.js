@@ -9,7 +9,7 @@ function RecommendationsList({ recommendations }) {
       {recommendations.map((recommendation) => {
         return (
           <li key={recommendation.id}>
-            <NavLink to={`/api/recommendations/${recommendation.id}`}>
+            <NavLink to={`/recommendations/${recommendation.id}`}>
               <Recommendation recommendation={recommendation} />
             </NavLink>
           </li>

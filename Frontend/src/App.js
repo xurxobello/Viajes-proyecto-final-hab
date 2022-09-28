@@ -12,6 +12,7 @@ import CreateRecommendationPage from "./pages/CreateRecommendationPage";
 import MoreLikesPage from "./pages/MoreLikesPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             path="/newRecommendation"
             element={<CreateRecommendationPage></CreateRecommendationPage>}
           />
+          <Route path="/user/:id" element={<UserPage />} />
           <Route path="/moreLikes" element={<MoreLikesPage></MoreLikesPage>} />
           <Route
             path="/categories"
@@ -33,10 +35,7 @@ function App() {
           />
           <Route path="/aboutUs" element={<AboutUsPage></AboutUsPage>} />
 
-          <Route
-            path="/api/recommendations/:id"
-            element={<RecommendationPage />}
-          />
+          <Route path="/recommendations/:id" element={<RecommendationPage />} />
           <Route path="/registro" element={<RegisterPage></RegisterPage>} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
