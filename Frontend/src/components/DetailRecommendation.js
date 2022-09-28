@@ -1,10 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { commentUserService } from "../services";
+
+import { commentUserService, getAllCommentsService } from "../services";
 
 function DetailRecommendation({ recommendation }) {
   const { id } = useParams();
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const data = await getAllCommentsService({ id });
+        setComments(data.comments);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUserData();
+  }, []);
+
   console.log(id);
   const { user, token } = useContext(AuthContext);
   const [content, setContent] = useState("");
@@ -63,9 +78,31 @@ function DetailRecommendation({ recommendation }) {
         </fieldset>
         <button>enviar</button>
       </form>
+      {/*  <ul>
+      {comments.map((comment) => {
+        return (
+          <li key={com.id}>
+            
+          </li>
+        );
+      })}
+    </ul> */}
     </>
   );
 }
 export default DetailRecommendation;
 
-//hay qye haces clicl el ahndle te tiene que hacer una peticion fetch y imprimirtelo todo cada vez que se envia un mensaje ,es decir cada vez que clicas
+{
+  /* ul>
+      {recommendations.map((recommendation) => {
+        return (
+          <li key={recommendation.id}>
+            <NavLink to={`/api/recommendations/${recommendation.id}`}>
+              <Recommendation recommendation={recommendation} />
+            </NavLink>
+          </li>
+        );
+      })}
+    </ul>
+ */
+}

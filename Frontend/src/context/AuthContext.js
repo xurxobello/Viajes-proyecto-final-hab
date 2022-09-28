@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { getMyUserDataService } from "../services";
 
 export const AuthContext = createContext(); //objeto global de contexto para llamarlo en otros componentes
+
 export const AuthProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token")); //esto es para que al recargar no se pierda el token
   const [user, setUser] = useState(null);
@@ -13,7 +14,7 @@ export const AuthProviderComponent = ({ children }) => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const data = getMyUserDataService({ token });
+        const data = await getMyUserDataService({ token });
         setUser(data); //seteo setUser con data para meter en  el user todos los detalles de usuario
       } catch (error) {
         logout(); //en el caso de que haya error deslogueamos
@@ -21,6 +22,7 @@ export const AuthProviderComponent = ({ children }) => {
     };
     if (token) getUserData();
   }, [token]);
+
   const login = (token) => {
     setToken(token); //esto de qui lo unico que hice fue en ved de meter en value el settoken ,lo meto en una funcion para exportarlo mas facil.Login es igual a exportar setLogin
   };

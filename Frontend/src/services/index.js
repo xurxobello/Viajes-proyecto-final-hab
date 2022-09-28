@@ -49,6 +49,7 @@ export const getMyUserDataService = async ({ token }) => {
     }
   );
   const json = await response.json();
+
   return json.data;
 };
 
@@ -126,4 +127,18 @@ export const commentUserService = async ({ content, id, token }) => {
   );
   const json = await response.json();
   //pendiente de meterle un error si no deja crearla
+};
+export const getAllCommentsService = async ({ id }) => {
+  //peticion a la bd para detalles del usuario-->id,nick email...
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/recommendation/${id}/allcomments`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+  return json.data;
 };
