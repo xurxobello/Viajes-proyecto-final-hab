@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllRecommendationsService } from "../services";
+import { getAllRecommendationsService } from "../services";// este hook te saca del backend las recomendaciones
 
 // Creamos la función useRecommendations que se va a encargar de tener un estado donde se van a guardar las recomendaciones que lleguen del API para luego exportarlas. Además va a exportar en otro estado información sobre si la petición todavía está cargando o ya acabo de cargar y un último estado que nos indique si la petición tuvo algún error.
 function useRecommendations() {

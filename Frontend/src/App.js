@@ -23,6 +23,7 @@ function App() {
         <Route element={<Navigation />}>
           <Route index path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+
           <Route
             path="/newRecommendation"
             element={<CreateRecommendationPage></CreateRecommendationPage>}

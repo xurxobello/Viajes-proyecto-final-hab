@@ -2,7 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-import { commentUserService, getAllCommentsService } from "../services";
+import {
+  commentUserService,
+  dislikeService,
+  getAllCommentsService,
+  likeService,
+} from "../services";
 
 function DetailRecommendation({ recommendation }) {
   const { id } = useParams();
@@ -26,6 +31,22 @@ function DetailRecommendation({ recommendation }) {
   }, []);
   console.log(comments);
   console.log(id);
+
+  const handleLike = async (e) => {
+    console.log(e);
+
+    try {
+      await likeService({ token, id });
+    } catch (error) {}
+  };
+
+  const handleDislike = async (e) => {
+    console.log(e);
+
+    try {
+      await dislikeService({ token, id });
+    } catch (error) {}
+  };
 
   const handleComment = async (e) => {
     e.preventDefault();
@@ -69,6 +90,9 @@ function DetailRecommendation({ recommendation }) {
           Autor:OJO AQUI ESTA MAL ,SALEN LOS DATOS DEL LOGADO NO DEL AUTOR{" "}
           {user.nick}
         </p>
+        <button onClick={handleLike}>👍</button>
+
+        <button onClick={handleDislike}>👎</button>
       </article>
 
       <form onSubmit={handleComment}>

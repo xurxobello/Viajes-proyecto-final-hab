@@ -13,10 +13,12 @@ function HomePage() {
 
   // en caso de que no esté cargando ni de un error indicamos que nos de la lista de recomendaciones llamando al componente RecommendationsList
   return (
-    <section>
-      <h2>Recomendaciones</h2>
-      <RecommendationsList recommendations={recommendations} />
-    </section>
+    <>
+      <section>
+        <h2>Recomendaciones</h2>
+        <RecommendationsList recommendations={recommendations} />
+      </section>
+    </>
   );
 }
 export default HomePage;
