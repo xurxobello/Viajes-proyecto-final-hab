@@ -67,7 +67,7 @@ export const getAllRecommendationsService = async () => {
   }
   // en caso de que no haya error obtenemos los datos que necesitamos
   // OJO!!! necesito recuperar más cosas de abajo!!!
-  return json.recommendations;
+  return json.data.recommendations;
 };
 
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener la recomendación solicitada
@@ -84,7 +84,8 @@ export const getSingleRecommendationService = async (id) => {
     throw new Error(json.message);
   }
   // en caso de que no haya error obtenemos los datos que necesitamos
-  return json[0];
+  console.log(json.data);
+  return json.data;
 };
 
 // creamos un servicio que se encargará del envío del formulario de las recomendaciones en el que necesitaremos los datos del formulario (data) y también el token

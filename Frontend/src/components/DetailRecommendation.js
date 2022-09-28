@@ -41,7 +41,7 @@ function DetailRecommendation({ recommendation }) {
       {recommendation.photo ? (
         <img
           // OJO!!!  Debajo no debe ir el número 23, sino el :id del user
-          src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/3/${recommendation.photo}`}
+          src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
           alt={recommendation.intro}
         />
       ) : null}
@@ -56,7 +56,7 @@ function DetailRecommendation({ recommendation }) {
         {recommendation.photo ? (
           <img
             // OJO!!!  Debajo no debe ir el número 23, sino el :id del user
-            src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/3/${recommendation.photo}`}
+            src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
             alt={recommendation.intro}
           />
         ) : null}
@@ -92,8 +92,7 @@ function DetailRecommendation({ recommendation }) {
 }
 export default DetailRecommendation;
 
-{
-  /* ul>
+/* ul>
       {recommendations.map((recommendation) => {
         return (
           <li key={recommendation.id}>
@@ -105,4 +104,3 @@ export default DetailRecommendation;
       })}
     </ul>
  */
-}

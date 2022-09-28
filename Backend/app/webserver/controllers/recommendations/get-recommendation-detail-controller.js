@@ -11,13 +11,15 @@ async function getDetailRecommendation(req, res) {
     // establecemos una conexión con el Pool y seleccionamos los datos que queremos mostrar al elegir el id de la recommendation
     connection = await mysqlPool.getConnection();
     const [result] = await connection.execute(
-      "SELECT title, category, place, intro, photo, content, created_at FROM recommendations WHERE id = ?",
+      "SELECT title, category, place, intro, photo, content, created_at, user_id FROM recommendations WHERE id = ?",
       [id]
     );
     console.log(result);
     //liberamos la conexión
     connection.release();
-    return res.send(result);
+    return res.send({
+      data: result[0],
+    });
   } catch (e) {
     console.error(e);
     return res.status(500).send({

@@ -40,7 +40,7 @@ async function getPlaceOrCategoryRecommendations(req, res) {
     // seleccionamos los datos que queremos enseñar en la búsqueda y los filtros por los que se puede realizar la misma en el caso de que no se ordenen por likes, mostrando primero los más recientes
     if (!orderByLikes) {
       result = await connection.execute(
-        `SELECT id, photo, title, category, place, intro, content, created_at FROM recommendations WHERE place LIKE ? OR category LIKE ? ORDER BY created_at DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
+        `SELECT id, photo, title, category, place, intro, content, created_at, user_id FROM recommendations WHERE place LIKE ? OR category LIKE ? ORDER BY created_at DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
         [filter, filter]
       );
     }
@@ -48,7 +48,7 @@ async function getPlaceOrCategoryRecommendations(req, res) {
     // seleccionamos los datos que queremos enseñar en la búsqueda y los filtros por los que se puede realizar la misma en el caso de que se ordenen por likes, mostrando primero los que más likes tengan
     else {
       result = await connection.execute(
-        `SELECT r.id, r.photo, r.title, r.category, r.place, r.intro, r.content, r.created_at, COUNT(l.recommendation_id) AS totalLikes FROM recommendations r LEFT JOIN likes l ON r.id = l.recommendation_id WHERE place LIKE ? OR category LIKE ? GROUP BY r.id ORDER BY totalLikes DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
+        `SELECT r.id, r.photo, r.title, r.category, r.place, r.intro, r.content, r.created_at, r.user_id COUNT(l.recommendation_id) AS totalLikes FROM recommendations r LEFT JOIN likes l ON r.id = l.recommendation_id WHERE place LIKE ? OR category LIKE ? GROUP BY r.id ORDER BY totalLikes DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
         [filter, filter]
       );
     }
@@ -139,7 +139,9 @@ async function getPlaceOrCategoryRecommendations(req, res) {
       };
     }
 
-    return res.send(responseBody);
+    return res.send({
+      data: responseBody,
+    });
   } catch (e) {
     console.error(e);
     return res.status(500).send({

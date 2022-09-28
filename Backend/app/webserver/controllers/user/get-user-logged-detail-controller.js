@@ -14,10 +14,13 @@ async function getDetailUser(req, res) {
       "SELECT id, avatar, name, nick, about_me, email, created_at FROM users WHERE id = ?",
       [id]
     );
-    console.log(result);
+
     //liberamos la conexión
     connection.release();
-    return res.send(result);
+
+    return res.send({
+      data: result[0],
+    });
   } catch (e) {
     console.error(e);
     return res.status(500).send({

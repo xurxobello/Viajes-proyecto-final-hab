@@ -15,8 +15,8 @@ async function getComments(req, res) {
   const page = parseInt(req.query.page, 10) || 1;
 
   // obtenemos los datos que vamos a omitir para empezar a partir de ese número, por ejemplo:
-  // si queremos empezar en la página 1: ( 1 - 1 ) * maxRecommendationsPerPage = 0, por lo que comenzamos a mostrar resultados a partir del resultado siguiente al 0
-  // si queremos empezar en la página 2: ( 2 - 1 ) * maxRecommendationsPerPage = 4, por lo que comenzamos a mostrar resultados a partir del resultado siguiente al 4
+  // si queremos empezar en la página 1: ( 1 - 1 ) * maxCommentsPerPage = 0, por lo que comenzamos a mostrar resultados a partir del resultado siguiente al 0
+  // si queremos empezar en la página 2: ( 2 - 1 ) * maxCommentsPerPage = 4, por lo que comenzamos a mostrar resultados a partir del resultado siguiente al 4
   const offset = (page - 1) * maxCommentsPerPage;
 
   try {
@@ -79,10 +79,12 @@ async function getComments(req, res) {
           ? `http://${req.headers.host}/api/recommendations?page=${lastPage}`
           : null,
 
-      recommendations: result[0],
+      comments: result[0],
     };
 
-    return res.send(responseBody);
+    return res.send({
+      data: responseBody,
+    });
   } catch (e) {
     console.error(e);
     return res.status(500).send({
