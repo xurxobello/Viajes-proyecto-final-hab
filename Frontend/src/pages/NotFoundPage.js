@@ -7,7 +7,7 @@ function NotFoundPage() {
       <NavLink to="/">
         <img
           src="https://static.doofinder.com/main-files/uploads/2019/08/110655-404-not-found-Doofinder.jpg"
-          alt="Page not found"
+          alt="Página no encontrada, haz click aquí para volver a la página principal"
         />
       </NavLink>
     </section>
