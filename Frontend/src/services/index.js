@@ -19,6 +19,7 @@ export const registerUserService = async ({
     }
   );
   const json = await response.json();
+
   //pendiente de meterle un error si no deja crearla
 };
 

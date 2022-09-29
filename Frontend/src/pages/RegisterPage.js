@@ -9,7 +9,7 @@ function RegisterPage() {
   const [email, setEmail] = useState(""); //estado para el email
   const [password, setPass] = useState(""); //estado para la pass
   const [passRepeat, setPassRepeat] = useState(""); //estado para la pass repetica
-  const [about_me, setAbout] = useState("");
+  const [about_me, setAbout] = useState("null");
   const [error, setError] = useState("");
 
   const handleForm = async (e) => {
