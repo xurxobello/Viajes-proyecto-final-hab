@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 function Auth() {
   const { user, logout } = useContext(AuthContext);
-  //console.log(user);
+
   return user ? (
     <p>
       usuario conectado como {user.name}

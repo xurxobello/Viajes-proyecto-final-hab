@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const Joi = require('joi');
-const mysqlPool = require('../../../database/mysql-pool');
+const Joi = require("joi");
+const mysqlPool = require("../../../database/mysql-pool");
 
 async function validate(payload) {
   const schema = Joi.object({
@@ -13,17 +13,17 @@ async function validate(payload) {
 
 async function likeRecom(req, res) {
   const { userId } = req.claims;
-  const {recommendationId }= req.params;
+  const { recommendationId } = req.params;
 
   // Validar datos
   try {
     const datosAvalidar = {
-    recommendationId,
+      recommendationId,
     };
     await validate(datosAvalidar);
   } catch (e) {
     return res.status(400).send({
-      message: `Debes introducir un ID de RECOMENDACIÓN que sea un número entero y positivo`
+      message: `Debes introducir un ID de RECOMENDACIÓN que sea un número entero y positivo`,
     });
   }
 
@@ -34,34 +34,32 @@ async function likeRecom(req, res) {
 
     const likeData = {
       user_id: userId,
-      recommendation_id: recommendationId
+      recommendation_id: recommendationId,
     };
 
     connection = await mysqlPool.getConnection();
     await connection.query(query, likeData);
     connection.release();
 
-    return res.status(201).send({
-        message:`Te gusta`
-        });
-
+    return res.status(200).send({
+      message: `Te gusta`,
+    });
   } catch (e) {
     if (connection) {
       connection.release();
     }
 
-    if (e.code === 'ER_DUP_ENTRY') {
-      return res.status(201).send({
-        message: `Te gusta fue creado`
+    if (e.code === "ER_DUP_ENTRY") {
+      return res.status(403).send({
+        message: `ya has dado like`,
       });
     }
 
     console.error(e);
     return res.status(500).send({
-      message: `Hemos encontrado una condición inesperada que impide completar la petición, rogamos lo intente en otro momento`
+      message: `Hemos encontrado una condición inesperada que impide completar la petición, rogamos lo intente en otro momento`,
     });
   }
-
 }
 
 module.exports = likeRecom;

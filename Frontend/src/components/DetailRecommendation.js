@@ -6,17 +6,30 @@ import {
   commentUserService,
   dislikeService,
   getAllCommentsService,
+  getLikesRecommendationService,
   likeService,
 } from "../services";
 
 function DetailRecommendation({ recommendation }) {
   const { id } = useParams();
 
+  const [likes, setLikes] = useState([]);
+
   const [comments, setComments] = useState([]);
 
   const { user, token } = useContext(AuthContext);
 
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    const getLikesData = async () => {
+      const data = await getLikesRecommendationService({ id });
+      try {
+        setLikes(data.totalLikes);
+      } catch (error) {}
+    };
+    getLikesData();
+  }, []);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -28,23 +41,30 @@ function DetailRecommendation({ recommendation }) {
       }
     };
     getUserData();
-  }, []);
-  console.log(comments);
-  console.log(id);
+  }, [likes]);
 
   const handleLike = async (e) => {
-    console.log(e);
-
     try {
-      await likeService({ token, id });
+      const responseStatus = await likeService({ token, id });
+      console.log(responseStatus);
+
+      await getLikesRecommendationService({ id });
+
+      if (responseStatus === 200) {
+        setLikes(likes + 1);
+      }
     } catch (error) {}
   };
 
   const handleDislike = async (e) => {
-    console.log(e);
-
     try {
-      await dislikeService({ token, id });
+      const responseStatus = await dislikeService({ token, id });
+      console.log(responseStatus);
+      await getLikesRecommendationService({ id });
+
+      if (responseStatus === 200) {
+        setLikes(likes - 1);
+      }
     } catch (error) {}
   };
 
@@ -52,10 +72,13 @@ function DetailRecommendation({ recommendation }) {
     e.preventDefault();
 
     try {
-      await commentUserService({ id, content, token });
+      const newComment = await commentUserService({ id, content, token });
       e.target.reset();
+      console.log(comments);
+      setComments([...comments, { ...newComment, nick: user.nick }]);
     } catch (error) {}
   };
+
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
 
   return !user ? (
@@ -71,6 +94,7 @@ function DetailRecommendation({ recommendation }) {
       ) : null}
       <p>Contenido: {recommendation.content}</p>
       <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
+      <p>👍{likes}</p>
     </article>
   ) : (
     <>
@@ -86,10 +110,11 @@ function DetailRecommendation({ recommendation }) {
         ) : null}
         <p>Contenido: {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
-        <p>
-          Autor:OJO AQUI ESTA MAL ,SALEN LOS DATOS DEL LOGADO NO DEL AUTOR{" "}
-          {user.nick}
+        <p className="errores">
+          Autor: AQUI HAY QUE HACER UNA lLLAMADA AL GET DEL NICK DE LA
+          RECOMENDACION
         </p>
+        <div>{likes}</div>
         <button onClick={handleLike}>👍</button>
 
         <button onClick={handleDislike}>👎</button>
@@ -113,8 +138,7 @@ function DetailRecommendation({ recommendation }) {
         {comments.map((comment) => {
           return (
             <li key={comment.id}>
-              Creado por:{user.nick}OJO AQUI ESTA MAL ,SALEN LOS DATOS DEL
-              LOGADO NO DEL AUTOR <br />
+              Creado por:{comment.nick}
               Creado el:
               {new Date(comment.created_at).toLocaleDateString()}
               <br />

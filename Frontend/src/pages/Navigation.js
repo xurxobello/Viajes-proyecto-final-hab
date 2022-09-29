@@ -9,15 +9,13 @@ function Navigation() {
       <nav>
         <Link to="/">Home</Link>
         <br></br>
+        <Link to="/user/:id">Perfil</Link>
+        <br></br>
         <Link to="/newRecommendation">New recommendation</Link>
         <br></br>
         <Link to="/moreLikes">TOP 10</Link>
         <br></br>
-        <Link to="/categories">Categories</Link>
-        <br></br>
         <Link to="/aboutUs">About us</Link>
-        <br></br>
-        <Link to="/user/:id">Perfil</Link>
       </nav>
       <Outlet />
     </>

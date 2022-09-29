@@ -10,14 +10,15 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Navigation from "./pages/Navigation";
 import CreateRecommendationPage from "./pages/CreateRecommendationPage";
 import MoreLikesPage from "./pages/MoreLikesPage";
-import CategoriesPage from "./pages/CategoriesPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import UserPage from "./pages/UserPage";
+import Search from "./components/Search";
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <Search></Search>
       <Routes>
         {/* OJO!!! NO SE COMO HACER QUE LA RUTA INICIAL SEA /api/recommendations */}
         <Route element={<Navigation />}>
@@ -30,10 +31,6 @@ function App() {
           />
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/moreLikes" element={<MoreLikesPage></MoreLikesPage>} />
-          <Route
-            path="/categories"
-            element={<CategoriesPage></CategoriesPage>}
-          />
           <Route path="/aboutUs" element={<AboutUsPage></AboutUsPage>} />
 
           <Route path="/recommendations/:id" element={<RecommendationPage />} />
