@@ -32,7 +32,7 @@ async function getComments(req, res) {
     // seleccionamos los datos que queremos enseñar en la búsqueda y los filtros por los que se puede realizar la misma en el caso de que no se ordenen por likes, mostrando primero los más recientes
 
     let result = await connection.execute(
-      `SELECT id, content, created_at, user_id, recommendation_id FROM comments WHERE recommendation_id = ? ORDER BY created_at DESC LIMIT ${maxCommentsPerPage} OFFSET ${offset}`,
+      `SELECT c.*, u.nick FROM comments c LEFT JOIN users u ON c.user_id = u.id WHERE c.recommendation_id = ? ORDER BY created_at DESC LIMIT ${maxCommentsPerPage} OFFSET ${offset}`,
       [recommendationId]
     );
 

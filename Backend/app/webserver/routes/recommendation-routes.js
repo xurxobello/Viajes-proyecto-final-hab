@@ -11,6 +11,9 @@ const likeRecom = require("../controllers/recommendations/like-recommendation");
 const dislikeRecom = require("../controllers/recommendations/dislike-recommendation");
 const createComment = require("../controllers/comments/create-comment-controller");
 const getComments = require("../controllers/comments/get-comment-controller");
+const top10 = require("../controllers/recommendations/top -10-recommendations");
+const getNickRecommendation = require("../controllers/recommendations/get-nick-recommendation");
+const getLikesRecommendation = require("../controllers/recommendations/get-likes-recommendation");
 
 const upload = multer();
 
@@ -46,5 +49,11 @@ router.post(
   createComment
 );
 router.get("/recommendation/:recommendationId/allcomments", getComments);
+router.get("/recommendation/top10", top10);
+router.get("/recommendations/:recommendationId/getNick", getNickRecommendation);
+router.get(
+  "/recommendations/:recommendationId/getLikesRecommendation",
+  getLikesRecommendation
+);
 
 module.exports = router;
