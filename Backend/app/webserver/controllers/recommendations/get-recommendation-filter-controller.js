@@ -48,7 +48,7 @@ async function getPlaceOrCategoryRecommendations(req, res) {
     // seleccionamos los datos que queremos enseñar en la búsqueda y los filtros por los que se puede realizar la misma en el caso de que se ordenen por likes, mostrando primero los que más likes tengan
     else {
       result = await connection.execute(
-        `SELECT r.id, r.photo, r.title, r.category, r.place, r.intro, r.content, r.created_at, r.user_id COUNT(l.recommendation_id) AS totalLikes FROM recommendations r LEFT JOIN likes l ON r.id = l.recommendation_id WHERE place LIKE ? OR category LIKE ? GROUP BY r.id ORDER BY totalLikes DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
+        `SELECT r.id, r.photo, r.title, r.category, r.place, r.intro, r.content, r.created_at, r.user_id, COUNT(l.recommendation_id) AS totalLikes FROM recommendations r LEFT JOIN likes l ON r.id = l.recommendation_id WHERE place LIKE ? OR category LIKE ? GROUP BY r.id ORDER BY totalLikes DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
         [filter, filter]
       );
     }
