@@ -20,7 +20,6 @@ function App() {
       <Header />
       <Search></Search>
       <Routes>
-        {/* OJO!!! NO SE COMO HACER QUE LA RUTA INICIAL SEA /api/recommendations */}
         <Route element={<Navigation />}>
           <Route index path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
