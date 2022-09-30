@@ -231,9 +231,9 @@ export const getLikesRecommendationService = async ({ id }) => {
 };
 
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
-export const getAllUserRecommendationsService = async ({ user }) => {
+export const getAllUserRecommendationsService = async (id) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendations/user/${user}`
+    `${process.env.REACT_APP_BACKEND}/api/recommendations/user/${id}`
   );
   // gestionamos la respuesta de la base de datos transformándola a json
   const json = await response.json();
@@ -243,7 +243,42 @@ export const getAllUserRecommendationsService = async ({ user }) => {
     throw new Error(json.message);
   }
   // en caso de que no haya error obtenemos los datos que necesitamos
-  // OJO!!! necesito recuperar más cosas de abajo!!!
-  console.log(json);
   return json.data.recommendations;
+};
+
+// función que nos permite leer los datos de cualquier usuario
+export const getUserDataService = async (id) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/users/detail/${id}`
+  );
+
+  // gestionamos la respuesta de la base de datos transformándola a json
+  const json = await response.json();
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  // en caso de que no haya error obtenemos los datos que necesitamos
+  return json.data;
+};
+
+export const deleteRecommendationService = async ({ id, token }) => {
+  console.log(id);
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/recommendations/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  // gestionamos la respuesta de la base de datos transformándola a json
+  const json = await response.json();
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
 };

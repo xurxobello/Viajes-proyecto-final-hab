@@ -7,7 +7,8 @@ function Auth() {
 
   return user ? (
     <p>
-      usuario conectado como {user.name}
+      usuario conectado como{" "}
+      <NavLink to={`user/${user.id}`}>{user.name}</NavLink>
       <button onClick={() => logout()}> LOGOUT</button>
     </p>
   ) : (
