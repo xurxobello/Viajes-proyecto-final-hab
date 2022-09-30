@@ -13,8 +13,11 @@ import MoreLikesPage from "./pages/MoreLikesPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import UserPage from "./pages/UserPage";
 import Search from "./components/Search";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <div className="App">
       <Header />

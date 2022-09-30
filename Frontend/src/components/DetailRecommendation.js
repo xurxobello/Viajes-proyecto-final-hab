@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 import {
   commentUserService,
+  deleteRecommendationService,
   dislikeService,
   getAllCommentsService,
   getLikesRecommendationService,
@@ -12,14 +13,11 @@ import {
 
 function DetailRecommendation({ recommendation }) {
   const { id } = useParams();
-
   const [likes, setLikes] = useState([]);
-
   const [comments, setComments] = useState([]);
-
   const { user, token } = useContext(AuthContext);
-
   const [content, setContent] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const getLikesData = async () => {
@@ -79,15 +77,21 @@ function DetailRecommendation({ recommendation }) {
     } catch (error) {}
   };
 
-  // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
+  const deleteRecommendation = async () => {
+    try {
+      await deleteRecommendationService({ id, token });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
+  // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
   return !user ? (
     <article>
       <p>Título: {recommendation.title}</p>
       <p>Lugar: {recommendation.place}</p>
       {recommendation.photo ? (
         <img
-          // OJO!!!  Debajo no debe ir el número 23, sino el :id del user
           src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
           alt={recommendation.intro}
         />
@@ -103,17 +107,32 @@ function DetailRecommendation({ recommendation }) {
         <p>Lugar: {recommendation.place}</p>
         {recommendation.photo ? (
           <img
-            // OJO!!!  Debajo no debe ir el número 23, sino el :id del user
             src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
             alt={recommendation.intro}
           />
         ) : null}
         <p>Contenido: {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
-        <p className="errores">
-          Autor: AQUI HAY QUE HACER UNA lLLAMADA AL GET DEL NICK DE LA
-          RECOMENDACION
+        <p>
+          Autor:{" "}
+          {/* OJO!!! abajo no es user.nick, ya que ese es el que está logado, no el que creó la recomendación */}
+          <NavLink to={`/user/${recommendation.user_id}`}>{user.nick}</NavLink>
         </p>
+
+        {/* En el caso de que exista usuario y el id de este coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}
+        {user.id === recommendation.user_id ? (
+          <section>
+            <button
+              onClick={() => {
+                if (window.confirm("¿Quieres eliminar la recomendación?"))
+                  deleteRecommendation(recommendation.id);
+              }}
+            >
+              Borrar recomendación
+            </button>
+            {error ? <p>{error}</p> : null}
+          </section>
+        ) : null}
         <div>{likes}</div>
         <button onClick={handleLike}>👍</button>
 

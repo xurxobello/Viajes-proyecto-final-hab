@@ -9,8 +9,6 @@ function Navigation() {
       <nav>
         <Link to="/">Home</Link>
         <br></br>
-        <Link to={`/user/${user.id}`}>Perfil</Link>
-        <br></br>
         <Link to="/newRecommendation">New recommendation</Link>
         <br></br>
         <Link to="/moreLikes">TOP 10</Link>
