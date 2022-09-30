@@ -229,3 +229,21 @@ export const getLikesRecommendationService = async ({ id }) => {
 
   return json.data;
 };
+
+// esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
+export const getAllUserRecommendationsService = async ({ user }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/recommendations/user/${user}`
+  );
+  // gestionamos la respuesta de la base de datos transformándola a json
+  const json = await response.json();
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  // en caso de que no haya error obtenemos los datos que necesitamos
+  // OJO!!! necesito recuperar más cosas de abajo!!!
+  console.log(json);
+  return json.data.recommendations;
+};
