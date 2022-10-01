@@ -264,7 +264,6 @@ export const getUserDataService = async (id) => {
 };
 
 export const deleteRecommendationService = async ({ id, token }) => {
-  console.log(id);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/recommendations/${id}`,
     {
@@ -297,6 +296,52 @@ export const sendAvatarService = async ({ data, token }) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+    }
+  );
+  // gestionamos la respuesta de la base de datos transformándola a json
+  const json = await response.json();
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const sendAboutMeService = async ({ about_me, token }) => {
+  const response = await fetch(
+    // indicamos la ruta a la que debe hacer la petición
+    `${process.env.REACT_APP_BACKEND}/api/users/updateAboutMe`,
+    {
+      //aqui vamos a enviar datos al servidor,hacemos un fetch a la direccion,y despues le tenemos que mandar el metodo y el tipo de dato que le mandamos,a continuacion postman no recibe objetos por eso pasamos a texto con stringify
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ about_me }),
+    }
+  );
+  // gestionamos la respuesta de la base de datos transformándola a json
+  const json = await response.json();
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const sendNameService = async ({ name, token }) => {
+  const response = await fetch(
+    // indicamos la ruta a la que debe hacer la petición
+    `${process.env.REACT_APP_BACKEND}/api/users/update`,
+    {
+      //aqui vamos a enviar datos al servidor,hacemos un fetch a la direccion,y despues le tenemos que mandar el metodo y el tipo de dato que le mandamos,a continuacion postman no recibe objetos por eso pasamos a texto con stringify
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name }),
     }
   );
   // gestionamos la respuesta de la base de datos transformándola a json

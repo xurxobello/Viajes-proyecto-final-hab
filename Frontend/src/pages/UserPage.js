@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import ModifyAboutMe from "../components/ModifyAboutMe";
 import ModifyAvatar from "../components/ModifyAvatar";
+import ModifyName from "../components/ModifyName";
 import { UserRecommendations } from "../components/UserRecommendations";
 import useUser from "../hooks/useUser";
 
@@ -29,7 +30,8 @@ function UserPage() {
         ) : null}
       </p>
       <ModifyAvatar />
-      <p>Usuario: {user.nick}</p>
+      <ModifyName />
+      <p>Apodo: {user.nick}</p>
       <p>Sobre mi: {user.about_me}</p>
       <ModifyAboutMe />
       <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>

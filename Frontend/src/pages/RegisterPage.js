@@ -82,7 +82,7 @@ function RegisterPage() {
           ></input>
         </fieldset>
         <fieldset>
-          <label htmlFor="abot_me">ABOUT ME</label>
+          <label htmlFor="about_me">ABOUT ME</label>
           <input
             type="text"
             id="about_me"
