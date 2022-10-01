@@ -13,10 +13,10 @@ async function sendEmail(email) {
   });
 
   const data = {
-    from: "Registro AugustProject <altas@altas.mailgun.org>",
+    from: "Registro Hack Your Travel <altas@altas.mailgun.org>",
     to: email,
-    subject: "Alta confirmada en AugustProject",
-    text: "Te has registrado correctamente en AugustProject, puedes empezar a usarlo cuando quieras",
+    subject: "Alta confirmada en Hack Your Travel",
+    text: "Te has registrado correctamente en Hack Your Travel, puedes empezar a usarlo cuando quieras",
   };
 
   mg.messages().send(data, function (error, body) {
