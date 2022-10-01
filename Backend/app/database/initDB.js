@@ -31,22 +31,23 @@ async function main() {
 
     // creamos la tabla users
     await connection.query(`
-        CREATE TABLE users(
-        id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      CREATE TABLE users (
+        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         name VARCHAR(255) NOT NULL,
-        nick VARCHAR(255) UNIQUE NOT NULL,
+        nick VARCHAR(255) NOT NULL UNIQUE,
         about_me VARCHAR(255) NULL,
-        email VARCHAR(255) UNIQUE NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
         password CHAR(60) NOT NULL,
         created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-        avatar VARCHAR(255) NULL
-        );
+        avatar VARCHAR(255) NULL,
+        PRIMARY KEY (id)
+      );
     `);
 
     // creamos la tabla recommendations
     await connection.query(`
-        CREATE TABLE recommendations(
-        id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      CREATE TABLE recommendations (
+        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
         category VARCHAR(255) NOT NULL,
         place VARCHAR(255) NOT NULL,
@@ -54,33 +55,50 @@ async function main() {
         content TEXT NOT NULL,
         photo VARCHAR(255) NOT NULL,
         created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-        user_id INTEGER UNSIGNED NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-        );
+        user_id INT UNSIGNED NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (user_id)
+        REFERENCES users (id)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+      );
     `);
 
     // creamos la tabla comments
     await connection.query(`
-        CREATE TABLE comments(
-        id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      CREATE TABLE comments (
+        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         content VARCHAR(3000) NOT NULL,
         created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-        user_id INTEGER UNSIGNED NOT NULL,
-        recommendation_id INTEGER UNSIGNED NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users(id),
-        FOREIGN KEY (recommendation_id) REFERENCES recommendations(id)
-        );
+        user_id INT UNSIGNED NOT NULL,
+        recommendation_id INT UNSIGNED NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (user_id)
+        REFERENCES users (id)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE,
+        FOREIGN KEY (recommendation_id)
+        REFERENCES recommendations (id)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+      );
     `);
 
     // creamos la tabla likes porque es una relación M,N
     await connection.query(`
-        CREATE TABLE likes(
-        user_id INTEGER UNSIGNED NOT NULL,
-        recommendation_id INTEGER UNSIGNED NOT NULL,
+      CREATE TABLE likes (
+        user_id INT UNSIGNED NOT NULL,
+        recommendation_id INT UNSIGNED NOT NULL,
         PRIMARY KEY (user_id, recommendation_id),
-        FOREIGN KEY (user_id) REFERENCES users(id),
-        FOREIGN KEY (recommendation_id) REFERENCES recommendations(id)
-        );
+        FOREIGN KEY (user_id)
+        REFERENCES users (id)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE,
+        FOREIGN KEY (recommendation_id)
+        REFERENCES recommendations (id)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+      );
     `);
 
     // Utilizamos chance para introducir datos aleatorios en mysql, puede que dé error a la hora de introducir los likes si se da la casualidad de que coincida algún usuario dando like a una misma recomendación, en cuyo caso a la hora de introducir los datos en mysql introducirá datos en la tabla likes hasta ese momento, sino si se vuelve a ejecutar este archivo borrará e introducirá datos de nuevo.
@@ -92,7 +110,7 @@ async function main() {
         [
           chance.name(),
           chance.sentence({ words: 1 }),
-          chance.sentence({ words: 12 }),
+          chance.sentence({ words: 9 }),
           chance.email(),
           chance.string({ length: 10, alpha: true, numeric: true }),
           chance.date({ year: 2022 }),

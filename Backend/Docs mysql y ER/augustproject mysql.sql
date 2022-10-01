@@ -8,6 +8,8 @@ USE augustproject;
 CREATE TABLE users (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
+  nick VARCHAR(255) NOT NULL UNIQUE,
+  about_me VARCHAR(255) NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   password CHAR(60) NOT NULL,
   created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -29,8 +31,8 @@ CREATE TABLE recommendations (
   PRIMARY KEY (id),
   FOREIGN KEY (user_id)
   REFERENCES users (id)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 -- Creamos la tabla comments. Tiene dos claves foráneas, una hacia uses.id y otra hacia recommendations.id
@@ -43,12 +45,12 @@ CREATE TABLE comments (
   PRIMARY KEY (id),
   FOREIGN KEY (user_id)
   REFERENCES users (id)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   FOREIGN KEY (recommendation_id)
   REFERENCES recommendations (id)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 -- Creamos la tabla likes que tiene dos claves primarias formadas por user_id y recommendation_id que a su vez son claves foráneas hacia users.id y recommendations.id
@@ -58,16 +60,11 @@ CREATE TABLE likes (
   PRIMARY KEY (user_id, recommendation_id),
   FOREIGN KEY (user_id)
   REFERENCES users (id)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   FOREIGN KEY (recommendation_id)
   REFERENCES recommendations (id)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
-
-
-
-
-
 
