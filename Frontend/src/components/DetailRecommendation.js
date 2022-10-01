@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 import {
@@ -18,6 +18,7 @@ function DetailRecommendation({ recommendation }) {
   const { user, token } = useContext(AuthContext);
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getLikesData = async () => {
@@ -126,6 +127,10 @@ function DetailRecommendation({ recommendation }) {
               onClick={() => {
                 if (window.confirm("¿Quieres eliminar la recomendación?"))
                   deleteRecommendation(recommendation.id);
+                // indicamos que si la recomendación se borra navegue a la web principal donde se verá ya publicada dicha recomendación
+                if (deleteRecommendation) {
+                  navigate(`/user/${user.id}`);
+                }
               }}
             >
               Borrar recomendación

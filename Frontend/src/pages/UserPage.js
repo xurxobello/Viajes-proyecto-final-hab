@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import ModifyAvatar from "../components/ModifyAvatar";
 import { UserRecommendations } from "../components/UserRecommendations";
 import useUser from "../hooks/useUser";
 
@@ -25,6 +26,7 @@ function UserPage() {
           />
         ) : null}
       </p>
+      <ModifyAvatar />
       <p>Usuario: {user.nick}</p>
       <p>Sobre mi: {user.about_me}</p>
       <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>
