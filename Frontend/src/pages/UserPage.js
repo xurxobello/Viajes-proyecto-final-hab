@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import ModifyAboutMe from "../components/ModifyAboutMe";
 import ModifyAvatar from "../components/ModifyAvatar";
 import { UserRecommendations } from "../components/UserRecommendations";
 import useUser from "../hooks/useUser";
@@ -17,6 +18,7 @@ function UserPage() {
   return (
     <section>
       <h2>PAGINA DE USUARIO</h2>
+
       <p>
         Avatar:{" "}
         {user.avatar ? (
@@ -29,6 +31,7 @@ function UserPage() {
       <ModifyAvatar />
       <p>Usuario: {user.nick}</p>
       <p>Sobre mi: {user.about_me}</p>
+      <ModifyAboutMe />
       <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>
       <UserRecommendations id={user.id} />
     </section>

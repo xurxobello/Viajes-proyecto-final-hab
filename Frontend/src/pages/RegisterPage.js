@@ -22,7 +22,9 @@ function RegisterPage() {
     try {
       navigate("/login");
       await registerUserService({ name, email, password, nick, about_me });
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message);
+    }
   };
   return (
     <section>

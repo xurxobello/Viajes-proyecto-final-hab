@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { sendAvatarService } from "../services";
 
@@ -8,7 +8,7 @@ function ModifyAvatar() {
   const [sending, setSending] = useState(false);
   const [image, setImage] = useState(null);
   const { user, token } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { id } = useParams();
 
   // definimos la manera de gestionar el formulario
   const handleForm = async (e) => {
@@ -32,7 +32,7 @@ function ModifyAvatar() {
     }
   };
 
-  return (
+  return user && user.id === +id ? (
     <form onSubmit={handleForm}>
       <label htmlFor="image">Añade un nuevo avatar: </label>
       <input
@@ -43,10 +43,12 @@ function ModifyAvatar() {
         onChange={(e) => setImage(e.target.files[0])}
         required
       />
-      <button>Enviar avatar</button>
+
       {sending ? <p>Enviando formulario...</p> : null}
       {error ? <p>{error}</p> : null}
+      <button>Enviar avatar</button>
     </form>
-  );
+  ) : null;
 }
+
 export default ModifyAvatar;
