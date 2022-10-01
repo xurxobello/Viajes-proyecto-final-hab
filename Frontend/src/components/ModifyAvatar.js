@@ -27,8 +27,9 @@ function ModifyAvatar() {
       // en caso de que haya un error indicamos que nos facilite dicho error
       setError(error.message);
     } finally {
-      // cuando acabe, sea porque todo va bien o haya un error indicamos que el estado de envío pase a false
+      // cuando acabe, sea porque todo va bien o haya un error indicamos que el estado de envío pase a false y la página se actualice
       setSending(false);
+      window.location.reload();
     }
   };
 

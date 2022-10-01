@@ -27,7 +27,7 @@ export const LoginPage = () => {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            id="emailLog"
+            id="email"
             name="email"
             required
             onChange={(e) => setEmailLog(e.target.value)}
@@ -37,13 +37,13 @@ export const LoginPage = () => {
           <label htmlFor="password">Contraseña</label>
           <input
             type="password"
-            id="passwordLog"
+            id="password"
             name="password"
             required
             onChange={(e) => setPassLog(e.target.value)}
           ></input>
         </fieldset>
-        <button>LOGEATE</button>
+        <button>Accede</button>
         {error ? <p className="errores">{error}</p> : null}{" "}
         {/* si existe un error,lo muestra,si no no hace nada */}
       </form>

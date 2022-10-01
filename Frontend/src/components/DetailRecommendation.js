@@ -45,7 +45,6 @@ function DetailRecommendation({ recommendation }) {
   const handleLike = async (e) => {
     try {
       const responseStatus = await likeService({ token, id });
-      console.log(responseStatus);
 
       await getLikesRecommendationService({ id });
 
@@ -58,7 +57,6 @@ function DetailRecommendation({ recommendation }) {
   const handleDislike = async (e) => {
     try {
       const responseStatus = await dislikeService({ token, id });
-      console.log(responseStatus);
       await getLikesRecommendationService({ id });
 
       if (responseStatus === 200) {
@@ -73,7 +71,6 @@ function DetailRecommendation({ recommendation }) {
     try {
       const newComment = await commentUserService({ id, content, token });
       e.target.reset();
-      console.log(comments);
       setComments([...comments, { ...newComment, nick: user.nick }]);
     } catch (error) {}
   };
