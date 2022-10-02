@@ -15,7 +15,7 @@ function HomePage() {
   return (
     <>
       <section>
-        <h2>Recomendaciones</h2>
+        <h2>Descubre el próximo lugar al que viajar</h2>
         <RecommendationsList recommendations={recommendations} />
       </section>
     </>

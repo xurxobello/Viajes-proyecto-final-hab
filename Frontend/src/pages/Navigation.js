@@ -6,13 +6,13 @@ function Navigation() {
   const { user } = useContext(AuthContext);
   return (
     <>
-      <nav>
+      <nav className="navegador">
         <Link to="/">Home</Link>
-        <br></br>
+
         <Link to="/newRecommendation">New recommendation</Link>
-        <br></br>
+
         <Link to="/moreLikes">TOP 10</Link>
-        <br></br>
+
         <Link to="/aboutUs">About us</Link>
       </nav>
       <Outlet />

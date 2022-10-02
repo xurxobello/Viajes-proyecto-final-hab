@@ -149,10 +149,10 @@ export const getAllCommentsService = async ({ id }) => {
   return json.data;
 };
 
-export const getBuscadorService = async (buscador) => {
+export const getSearchService = async (filter) => {
   //peticion a la bd para detalles del usuario-->id,nick email...
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${buscador}`,
+    `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${filter}`,
     {
       method: "GET",
       headers: {
@@ -209,8 +209,6 @@ export const getMoreLikesRecommendationsService = async () => {
     throw new Error(json.message);
   }
   // en caso de que no haya error obtenemos los datos que necesitamos
-  // OJO!!! necesito recuperar más cosas de abajo!!!
-
   return json.data;
 };
 
