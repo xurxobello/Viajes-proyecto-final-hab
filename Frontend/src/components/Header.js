@@ -8,6 +8,7 @@ function Header() {
       <h1>
         <NavLink to="/">
           <img
+            className="header"
             src={logo}
             alt="Página no encontrada, haz click aquí para volver a la página principal"
           />

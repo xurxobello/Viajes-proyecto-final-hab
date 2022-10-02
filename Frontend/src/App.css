@@ -8,6 +8,9 @@
 .App {
   text-align: center;
   font-family: "Special Elite", cursive;
+  background-image: url(/src/fotos/claro981.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .errores {
@@ -19,6 +22,7 @@
   gap: 5rem;
   font-size: 35px;
   font-family: "Special Elite", cursive;
+  margin-bottom: 3rem;
 }
 a:link,
 a:visited,
@@ -43,8 +47,15 @@ li {
 body {
   --def: #96b7c4;
   --inv: #fff;
-  background-image: linear-gradient(-25deg, #acacac 0%, #96b7c4 100%);
+  background-image: linear-gradient(-25deg, #acacac 0%, #ececec 100%);
 }
 .letraNav {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.logout {
+  width: 20px;
+  height: 20px;
+}
+.header {
+  margin-top: 5rem;
 }

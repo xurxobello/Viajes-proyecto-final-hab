@@ -1,6 +1,6 @@
 function AboutUsPage() {
   return (
-    <section>
+    <section className="aboutUs">
       <h1>TEXTO FIJO INFORMACION PAGINA/CREADORES</h1>
       <h4>
         {" "}
