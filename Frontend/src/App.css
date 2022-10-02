@@ -59,3 +59,7 @@ body {
 .header {
   margin-top: 5rem;
 }
+.logo {
+  width: 10rem;
+  height: 10rem;
+}
