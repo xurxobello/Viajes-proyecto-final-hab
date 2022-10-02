@@ -87,7 +87,7 @@ function DetailRecommendation({ recommendation }) {
   return !user ? (
     <>
       <article>
-        <p>Título: {recommendation.title}</p>
+        <h2>Título: {recommendation.title}</h2>
         <p>Lugar: {recommendation.place}</p>
         {recommendation.photo ? (
           <img

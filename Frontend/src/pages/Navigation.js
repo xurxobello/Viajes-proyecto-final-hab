@@ -7,13 +7,21 @@ function Navigation() {
   return (
     <>
       <nav className="navegador">
-        <Link to="/">Home</Link>
+        <Link className="letraNav" to="/">
+          Home
+        </Link>
 
-        <Link to="/newRecommendation">New recommendation</Link>
+        <Link className="letraNav" to="/newRecommendation">
+          New recommendation
+        </Link>
 
-        <Link to="/moreLikes">TOP 10</Link>
+        <Link className="letraNav" to="/moreLikes">
+          TOP 10
+        </Link>
 
-        <Link to="/aboutUs">About us</Link>
+        <Link className="letraNav" to="/aboutUs">
+          About us
+        </Link>
       </nav>
       <Outlet />
     </>

@@ -1,16 +1,13 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App {
+  text-align: center;
+  font-family: "Special Elite", cursive;
 }
 
 .errores {
@@ -19,8 +16,9 @@
 .navegador {
   display: flex;
   justify-content: center;
-  gap: 10rem;
-  font-size: 20px;
+  gap: 5rem;
+  font-size: 35px;
+  font-family: "Special Elite", cursive;
 }
 a:link,
 a:visited,
@@ -34,10 +32,19 @@ a:active {
 .secciones {
   width: 5;
   height: 10;
-  background-color: blueviolet;
+  background-color: rgb(184, 184, 184);
   margin: 30px;
 }
 li {
   width: 20;
   height: 10;
+  list-style: none;
+}
+body {
+  --def: #96b7c4;
+  --inv: #fff;
+  background-image: linear-gradient(-25deg, #acacac 0%, #96b7c4 100%);
+}
+.letraNav {
+  color: rgb(255, 255, 255);
 }
