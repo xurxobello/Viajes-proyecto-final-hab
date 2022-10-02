@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-
+import DetailUser from "./DetailUser";
 import {
   commentUserService,
   deleteRecommendationService,
@@ -85,19 +85,22 @@ function DetailRecommendation({ recommendation }) {
 
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
   return !user ? (
-    <article>
-      <p>Título: {recommendation.title}</p>
-      <p>Lugar: {recommendation.place}</p>
-      {recommendation.photo ? (
-        <img
-          src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
-          alt={recommendation.intro}
-        />
-      ) : null}
-      <p>Contenido: {recommendation.content}</p>
-      <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
-      <p>👍{likes}</p>
-    </article>
+    <>
+      <article>
+        <p>Título: {recommendation.title}</p>
+        <p>Lugar: {recommendation.place}</p>
+        {recommendation.photo ? (
+          <img
+            src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
+            alt={recommendation.intro}
+          />
+        ) : null}
+        <p>Contenido: {recommendation.content}</p>
+        <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
+        <p>👍{likes}</p>
+      </article>
+      <DetailUser id={recommendation.user_id} />
+    </>
   ) : (
     <>
       <article>
@@ -111,14 +114,9 @@ function DetailRecommendation({ recommendation }) {
         ) : null}
         <p>Contenido: {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
-        <p>
-          Autor:{" "}
-          {/* OJO!!! abajo no es user.nick, ya que ese es el que está logado, no el que creó la recomendación */}
-          <NavLink to={`/user/${recommendation.user_id}`}>{user.nick}</NavLink>
-        </p>
 
-        {/* En el caso de que exista usuario y el id de este coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}
-        {user.id === recommendation.user_id ? (
+        {/* En el caso de que el id del usuario coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}
+        {user && user.id === recommendation.user_id ? (
           <section>
             <button
               onClick={() => {
@@ -140,6 +138,8 @@ function DetailRecommendation({ recommendation }) {
 
         <button onClick={handleDislike}>👎</button>
       </article>
+
+      <DetailUser id={recommendation.user_id} />
 
       <form onSubmit={handleComment}>
         <fieldset>

@@ -4,7 +4,6 @@ function MoreLikeRecommendation({ recommendation }) {
     <article>
       {recommendation.photo ? (
         <img
-          // OJO!!!  Debajo no debe ir el número 23, sino el :id del user
           src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
           alt={recommendation.intro}
         />

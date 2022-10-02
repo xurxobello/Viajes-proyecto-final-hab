@@ -6,11 +6,13 @@ function Auth() {
   const { user, logout } = useContext(AuthContext);
 
   return user ? (
-    <p>
-      usuario conectado como{" "}
+    <section>
       <NavLink to={`/user/${user.id}`}>{user.name}</NavLink>
-      <button onClick={() => logout()}> LOGOUT</button>
-    </p>
+      <button className="btn from-top" onClick={() => logout()}>
+        {" "}
+        LOGOUT
+      </button>
+    </section>
   ) : (
     <NavLink to="/login">Iniciar sesión</NavLink>
   );
