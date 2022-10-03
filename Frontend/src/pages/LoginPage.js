@@ -20,35 +20,43 @@ export const LoginPage = () => {
   };
   return (
     <section>
-      <h2>LOGIN</h2>
-
-      <form onSubmit={handleLog}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            onChange={(e) => setEmailLog(e.target.value)}
-          ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="password">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => setPassLog(e.target.value)}
-          ></input>
-        </fieldset>
-        <button>Accede</button>
-        {error ? <p className="errores">{error}</p> : null}{" "}
-        {/* si existe un error,lo muestra,si no no hace nada */}
-      </form>
+      <div id="container">
+        <h2 className="tituloFormLogin">&bull; LOGIN &bull;</h2>
+        <div className="underline"></div>
+        <form onSubmit={handleLog}>
+          <div className="email">
+            <label htmlFor="email"></label>
+            <input
+              placeholder="Password"
+              type="password"
+              id="email_input"
+              name="email"
+              required
+              onChange={(e) => setPassLog(e.target.value)}
+            ></input>
+          </div>
+          <div className="name">
+            <label htmlFor="email"></label>
+            <input
+              placeholder="Name"
+              type="email"
+              id="password"
+              name="password"
+              required
+              onChange={(e) => setEmailLog(e.target.value)}
+            ></input>
+          </div>
+          <div className="submit">
+            <input type="submit" value="Login" id="form_button" />
+          </div>
+          {error ? <p className="errores">{error}</p> : null}{" "}
+          {/* si existe un error,lo muestra,si no no hace nada */}
+        </form>
+      </div>
       <p>
-        <NavLink to="/registro">Regístrate</NavLink>
+        <NavLink className="buttonRegister" to="/registro">
+          Regístrate
+        </NavLink>
       </p>
     </section>
   );

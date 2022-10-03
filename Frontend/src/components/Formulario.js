@@ -29,7 +29,7 @@ export const Formulario = () => {
   return (
     <>
       <div id="container">
-        <h1>&bull; REGISTRATION &bull;</h1>
+        <h1 className=" tituloFormRegister">&bull; REGISTRATION &bull;</h1>
         <div className="underline"></div>
         <div className="icon_wrapper">
           <svg className="icon" viewBox="0 0 145.192 145.192">

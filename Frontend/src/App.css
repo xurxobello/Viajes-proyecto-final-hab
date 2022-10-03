@@ -29,6 +29,9 @@
   font-family: "Special Elite", cursive;
   margin-bottom: 3rem;
 }
+.letraNav:hover {
+  color: #96b7c4;
+}
 a:link,
 a:visited,
 a:active {
@@ -306,4 +309,17 @@ textarea {
   textarea {
     font-size: 0.875em;
   }
+}
+.tituloFormRegister {
+  margin-top: 15px;
+}
+.tituloFormLogin {
+  margin-top: 2rem;
+}
+.buttonRegister {
+  color: black;
+  font-size: 40px;
+}
+.buttonRegister:hover {
+  color: #96b7c4;
 }
