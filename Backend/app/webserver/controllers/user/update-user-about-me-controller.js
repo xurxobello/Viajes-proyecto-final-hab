@@ -15,8 +15,6 @@ async function updateUserAboutMe(req, res) {
   const { userId } = req.claims;
   const about_me = req.body.about_me;
 
-  console.log(about_me);
-
   // Validar datos
   try {
     const payload = {
@@ -55,6 +53,3 @@ async function updateUserAboutMe(req, res) {
 }
 
 module.exports = updateUserAboutMe;
-
-// UPDATE `augustproject`.`users` SET `about_me` = 'hola caracola' WHERE (`id` = '1');
-// UPDATE `augustproject`.`users` SET `name` = 'xurxo8' WHERE (`id` = '1');

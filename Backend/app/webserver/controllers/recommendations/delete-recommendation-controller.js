@@ -36,7 +36,7 @@ async function deleteRecommendation(req, res) {
       "DELETE FROM recommendations WHERE id = ? AND user_id = ?",
       [recommendationId, userId]
     );
-    console.log(result.affectedRows);
+
     // liberamos la conexión al pool
     connection.release();
     if (result.affectedRows === 0) {

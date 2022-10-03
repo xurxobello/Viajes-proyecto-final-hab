@@ -17,26 +17,28 @@ function UserPage() {
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
   return (
-    <section>
-      <h2>PAGINA DE USUARIO</h2>
+    <main>
+      <section>
+        <h2>PAGINA DE USUARIO</h2>
 
-      <p>
-        Avatar:{" "}
-        {user.avatar ? (
-          <img
-            src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
-            alt="Foto de perfil"
-          />
-        ) : null}
-      </p>
-      <ModifyAvatar />
-      <ModifyName />
-      <p>Apodo: {user.nick}</p>
-      <p>Sobre mi: {user.about_me}</p>
-      <ModifyAboutMe />
-      <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>
-      <UserRecommendations id={user.id} />
-    </section>
+        <p>
+          Avatar:{" "}
+          {user.avatar ? (
+            <img
+              src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
+              alt="Foto de perfil"
+            />
+          ) : null}
+        </p>
+        <ModifyAvatar />
+        <ModifyName />
+        <p>Apodo: {user.nick}</p>
+        <p>Sobre mi: {user.about_me}</p>
+        <ModifyAboutMe />
+        <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>
+        <UserRecommendations id={user.id} />
+      </section>
+    </main>
   );
 }
 export default UserPage;

@@ -24,7 +24,7 @@ function useRecommendations(id) {
           : await getAllRecommendationsService();
 
         // si todo va bien nos devuelve las recomendaciones
-        setRecommendations(data);
+        setRecommendations(data.recommendations);
       } catch (error) {
         // si da un error nos devuelve el mensaje del error
         setError(error.message);

@@ -16,10 +16,12 @@ function RecommendationPage() {
 
   // en caso de que no esté cargando ni de un error indicamos que nos de la recomendación llamando al componente DetailRecommendation
   return (
-    <section>
-      <h2>Recomendación</h2>
-      <DetailRecommendation recommendation={recommendation} />
-    </section>
+    <main>
+      <section>
+        <h2>Recomendación</h2>
+        <DetailRecommendation recommendation={recommendation} />
+      </section>
+    </main>
   );
 }
 export default RecommendationPage;

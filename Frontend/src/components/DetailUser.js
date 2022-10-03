@@ -14,15 +14,10 @@ function DetailUser({ id }) {
     <aside>
       <NavLink to={`/user/${user.id}`}>
         <h2>Sobre mi:</h2>
-        <p>
-          Avatar:{" "}
-          {user.avatar ? (
-            <img
-              src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
-              alt="Foto de perfil"
-            />
-          ) : null}
-        </p>
+        <img
+          src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
+          alt="Foto de perfil"
+        />
         <p>Apodo: {user.nick}</p>
         <p>Sobre mi: {user.about_me}</p>
         <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>

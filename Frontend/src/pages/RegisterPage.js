@@ -27,74 +27,76 @@ function RegisterPage() {
     }
   };
   return (
-    <section>
-      <h2>Registro</h2>
+    <main>
+      <section>
+        <h2>Registro</h2>
 
-      <form onSubmit={handleForm}>
-        {" "}
-        {/* en este handleForm lo que hacemos es decirle : cuando envies el formulario ejecuta esta funcion,y haz lo que dice (linea 8) */}
-        <fieldset>
-          <label htmlFor="name">Nombre</label>
-          <input
-            id="name"
-            name="name"
-            required
-            onChange={(e) => setName(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
-          ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="nick">NICKNAME</label>
-          <input
-            id="nick"
-            name="nick"
-            required
-            onChange={(e) => setNickName(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
-          ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            onChange={(e) => setEmail(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
-          ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="password">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => setPass(e.target.value)}
-          ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="passwordRepeat">Repite la contraseña</label>
-          <input
-            type="password"
-            id="passwordRepeat"
-            name="passwordRepeat"
-            required
-            onChange={(e) => setPassRepeat(e.target.value)}
-          ></input>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="about_me">ABOUT ME</label>
-          <input
-            type="text"
-            id="about_me"
-            name="about_me"
-            onChange={(e) => setAbout(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
-          ></input>
-        </fieldset>
-        <button>registrate</button>
-        {error ? <p className="errores">{error}</p> : null}{" "}
-        {/* si existe un error,lo muestra,si no no hace nada */}
-      </form>
-    </section>
+        <form onSubmit={handleForm}>
+          {" "}
+          {/* en este handleForm lo que hacemos es decirle : cuando envies el formulario ejecuta esta funcion,y haz lo que dice (linea 8) */}
+          <fieldset>
+            <label htmlFor="name">Nombre</label>
+            <input
+              id="name"
+              name="name"
+              required
+              onChange={(e) => setName(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
+            ></input>
+          </fieldset>
+          <fieldset>
+            <label htmlFor="nick">NICKNAME</label>
+            <input
+              id="nick"
+              name="nick"
+              required
+              onChange={(e) => setNickName(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
+            ></input>
+          </fieldset>
+          <fieldset>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              onChange={(e) => setEmail(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
+            ></input>
+          </fieldset>
+          <fieldset>
+            <label htmlFor="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              onChange={(e) => setPass(e.target.value)}
+            ></input>
+          </fieldset>
+          <fieldset>
+            <label htmlFor="passwordRepeat">Repite la contraseña</label>
+            <input
+              type="password"
+              id="passwordRepeat"
+              name="passwordRepeat"
+              required
+              onChange={(e) => setPassRepeat(e.target.value)}
+            ></input>
+          </fieldset>
+          <fieldset>
+            <label htmlFor="about_me">ABOUT ME</label>
+            <input
+              type="text"
+              id="about_me"
+              name="about_me"
+              onChange={(e) => setAbout(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
+            ></input>
+          </fieldset>
+          <button>registrate</button>
+          {error ? <p className="errores">{error}</p> : null}{" "}
+          {/* si existe un error,lo muestra,si no no hace nada */}
+        </form>
+      </section>
+    </main>
   );
 }
 export default RegisterPage;

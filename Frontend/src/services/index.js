@@ -55,9 +55,12 @@ export const getMyUserDataService = async ({ token }) => {
 };
 
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
-export const getAllRecommendationsService = async () => {
+export const getAllRecommendationsService = async (
+  filter = "",
+  orderByLikes = ""
+) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendations`
+    `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${filter}&orderByLikes=${orderByLikes}`
   );
   // gestionamos la respuesta de la base de datos transformándola a json
   const json = await response.json();
@@ -68,7 +71,7 @@ export const getAllRecommendationsService = async () => {
   }
   // en caso de que no haya error obtenemos los datos que necesitamos
   // OJO!!! necesito recuperar más cosas de abajo!!!
-  return json.data.recommendations;
+  return json.data;
 };
 
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener la recomendación solicitada
@@ -241,7 +244,7 @@ export const getAllUserRecommendationsService = async (id) => {
     throw new Error(json.message);
   }
   // en caso de que no haya error obtenemos los datos que necesitamos
-  return json.data.recommendations;
+  return json.data;
 };
 
 // función que nos permite leer los datos de cualquier usuario
