@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getSearchService } from "../services";
+import search from "../fotos/buscar.png";
 
 function Search() {
   const [error, setError] = useState("");
@@ -28,7 +29,9 @@ function Search() {
     <form onSubmit={handleForm}>
       <label htmlFor="filter">buscador</label>
       <input type="search" id="filter" name="filter"></input>
-      <button>Enviar</button>
+      <button>
+        <img src={search} alt="Buscar" className="buscador" />
+      </button>
       {sending ? <p>Enviando formulario...</p> : null}
       {error ? <p>{error}</p> : null}
     </form>
