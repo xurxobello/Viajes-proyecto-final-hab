@@ -6,10 +6,18 @@ import logo from "../fotos/logout.png";
 function Auth() {
   const { user, logout } = useContext(AuthContext);
 
+  const style = {
+    color: "black",
+    fontSize: "20px",
+  };
+
   return user ? (
     <section>
-      <NavLink to={`/user/${user.id}`}>{user.name}</NavLink>
-      <button className="btn from-top" onClick={() => logout()}>
+      <NavLink style={style} to={`/user/${user.id}`}>
+        Usuario:
+        {user.name}
+      </NavLink>
+      <button onClick={() => logout()}>
         {" "}
         <img
           className="logout"

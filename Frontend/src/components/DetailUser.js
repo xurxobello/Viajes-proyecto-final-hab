@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 import useUser from "../hooks/useUser";
+const stylePerfil = {
+  borderRadius: "50%",
+};
 
 function DetailUser({ id }) {
   // Importamos el Hook, que se encarga, entre otras cosas, de hacer una petición al API para obtener las información
@@ -15,12 +18,13 @@ function DetailUser({ id }) {
       <NavLink to={`/user/${user.id}`}>
         <h2>Sobre mi:</h2>
         <img
+          style={stylePerfil}
           src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
           alt="Foto de perfil"
         />
-        <p>Apodo: {user.nick}</p>
-        <p>Sobre mi: {user.about_me}</p>
-        <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>
+        <p>Nick: {user.nick}</p>
+        <p>About me: {user.about_me}</p>
+        <p>User since: {new Date(user.created_at).toLocaleString()}</p>
       </NavLink>
     </aside>
   );

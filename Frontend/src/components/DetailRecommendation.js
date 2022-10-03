@@ -95,7 +95,7 @@ function DetailRecommendation({ recommendation }) {
             alt={recommendation.intro}
           />
         ) : null}
-        <p>Contenido: {recommendation.content}</p>
+        <p className="contentDetail">{recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
         <p>👍{likes}</p>
       </article>
@@ -112,7 +112,7 @@ function DetailRecommendation({ recommendation }) {
             alt={recommendation.intro}
           />
         ) : null}
-        <p>Contenido: {recommendation.content}</p>
+        <p className="contentDetail">Contenido : {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
 
         {/* En el caso de que el id del usuario coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}

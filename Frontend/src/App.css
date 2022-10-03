@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;1,600&family=Special+Elite&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +21,10 @@
 .init {
   font-family: "Special Elite", cursive;
   color: black;
+  font-size: 20px;
+}
+.init:hover {
+  color: #96b7c4;
 }
 
 .errores {
@@ -27,10 +33,11 @@
 .navegador {
   display: flex;
   justify-content: center;
-  gap: 0.8rem;
-  font-size: 16px;
+  gap: 5rem;
+  font-size: 35px;
   font-family: "Special Elite", cursive;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 .letraNav:hover {
   color: #96b7c4;
@@ -54,11 +61,7 @@ li {
   height: 10;
   list-style: none;
 }
-body {
-  --def: #96b7c4;
-  --inv: #fff;
-  background-image: linear-gradient(-25deg, #acacac 0%, #ececec 100%);
-}
+
 .letraNav {
   color: rgb(0, 0, 0);
 }
@@ -91,8 +94,9 @@ main {
   height: 10rem;
 }
 .iconoBuscador {
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
+  margin-top: 2rem;
 }
 .buscador {
   background-color: transparent !important;
@@ -341,4 +345,35 @@ textarea {
 }
 .buttonRegister:hover {
   color: #96b7c4;
+}
+#container {
+  background-color: #dad5d3;
+  border-radius: 10px;
+}
+#form_button1 {
+  background: none;
+  border: solid 2px #474544;
+  color: #474544;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Helvetica", Arial, sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 10px 35px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#form_button1:hover {
+  background: #474544;
+  color: #f2f3eb;
+}
+
+.contentDetail {
+  font-family: "Raleway", sans-serif;
 }

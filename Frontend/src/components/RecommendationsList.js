@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getAllRecommendationsService } from "../services";
 import Recommendation from "./Recommendation";
+import search from "../fotos/buscar.png";
 
 // creamos el componente RecommendationsList que recibe una prop con las recomendaciones
 function RecommendationsList({ recommendations }) {
@@ -34,30 +35,55 @@ function RecommendationsList({ recommendations }) {
       setSending(false);
     }
   };
+  const style = {
+    border: "solid",
+    borderRadius: "10px",
+    marginTop: "0.1rem",
+  };
   // realizamos un ternario indicando que si hay recomendaciones las recorra haciendo un map y nos las facilite dentro de una lista y en caso de que no haya ninguna nos devuelva un mensaje indicándolo. Hacemos que cada li tenga una key única que sea la id de la recomendación y creamos un link que al hacer click en el lí nos lleve al detalle de esa recomendación en concreto
   return recommendations.length ? (
     <>
-      <form onSubmit={handleForm}>
-        <label htmlFor="filter">filtro</label>
-        <input
-          type="text"
-          id="filter"
-          name="filter"
-          onChange={(e) => setFilter(e.target.value)}
-        />
-        <label htmlFor="order">order</label>
-        <select
-          id="order"
-          name="order"
-          onChange={(e) => setOrder(e.target.value)}
-        >
-          <option value="date" defaultValue>
-            fecha
-          </option>
-          <option value="votes"> votos</option>
-        </select>
-        <button>enviar</button>
-      </form>
+      <div>
+        <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
+        <div className="underline"></div>
+
+        <form onSubmit={handleForm}>
+          <div className="name">
+            <label htmlFor="filter"></label>
+            <input
+              placeholder="    Search your recommendation"
+              style={style}
+              type="text"
+              id="email_input"
+              name="email"
+              required
+              onChange={(e) => setFilter(e.target.value)}
+            ></input>
+          </div>
+          <div className="name">
+            <label htmlFor="email"></label>
+            <label htmlFor="order"></label>
+            <select
+              placeholder="Filtros"
+              style={style}
+              id="subject_inpu"
+              name="subjec"
+              onChange={(e) => setOrder(e.target.value)}
+            >
+              <option value="date" defaultValue>
+                Date
+              </option>
+              <option value="votes"> Likes</option>
+            </select>
+          </div>
+          {error ? <p className="errores">{error}</p> : null}{" "}
+          {/* si existe un error,lo muestra,si no no hace nada */}
+          <div className="submit">
+            <input type="submit" value="Search" id="form_button1" />
+          </div>
+        </form>
+      </div>
+      ;
       <ul className="recommendationsList">
         {recommendations.map((recommendation) => {
           return (

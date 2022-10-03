@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Search></Search>
+
       <Routes>
         <Route element={<Navigation />}>
           <Route index path="/" element={<HomePage />} />

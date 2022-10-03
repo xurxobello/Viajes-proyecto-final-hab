@@ -10,7 +10,7 @@ function CreateRecommendationPage() {
   return (
     <main>
       <section>
-        <h2>NUEVA RECOMENDACION</h2>
+        <h2>NEW RECOMMENDATION</h2>
 
         {user ? (
           <CreateRecommendation />
