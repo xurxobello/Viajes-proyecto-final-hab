@@ -23,7 +23,6 @@ async function sendEmail(email) {
     if (error) {
       console.error("error", error);
     }
-    console.log(body);
   });
 }
 
@@ -43,7 +42,7 @@ async function validate(accountData) {
 async function createAccount(req, res) {
   // hacemos una copia del req.body por seguridad
   const accountData = { ...req.body };
-  console.log(req.body);
+
   // validamos los datos recibidos y en caso de no cumplir los requisitos devolvemos un código de estado 400 debido a que es percibido como un error del cliente
   try {
     await validate(accountData);

@@ -66,7 +66,7 @@ async function createComment(req, res) {
       user_id: userId,
       recommendation_id: recommendationId,
     });
-    console.log(newComment);
+
     connection.release();
 
     return res.status(201).send({

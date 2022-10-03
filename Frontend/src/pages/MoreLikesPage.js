@@ -13,10 +13,12 @@ function MoreLikesPage() {
 
   // en caso de que no esté cargando ni de un error indicamos que nos de la lista de recomendaciones llamando al componente RecommendationsList
   return (
-    <section>
-      <h2>RECOMENDACIONES CON MAS LIKES</h2>
-      <MoreLikesRecommendationsList recommendations={recommendations} />
-    </section>
+    <main>
+      <section>
+        <h2>RECOMENDACIONES CON MAS LIKES</h2>
+        <MoreLikesRecommendationsList recommendations={recommendations} />
+      </section>
+    </main>
   );
 }
 export default MoreLikesPage;

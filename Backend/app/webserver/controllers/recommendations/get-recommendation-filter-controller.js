@@ -38,7 +38,7 @@ async function getPlaceOrCategoryRecommendations(req, res) {
     let result = null;
 
     // seleccionamos los datos que queremos enseñar en la búsqueda y los filtros por los que se puede realizar la misma en el caso de que no se ordenen por likes, mostrando primero los más recientes
-    if (!orderByLikes) {
+    if (orderByLikes === "date") {
       result = await connection.execute(
         `SELECT id, photo, title, category, place, intro, content, created_at, user_id FROM recommendations WHERE place LIKE ? OR category LIKE ? ORDER BY created_at DESC LIMIT ${maxRecommendationsPerPage} OFFSET ${offset}`,
         [filter, filter]
