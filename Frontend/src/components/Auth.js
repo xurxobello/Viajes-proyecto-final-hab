@@ -19,7 +19,9 @@ function Auth() {
       </button>
     </section>
   ) : (
-    <NavLink to="/login">Iniciar sesión</NavLink>
+    <NavLink to="/login" className="init">
+      Iniciar sesión
+    </NavLink>
   );
 }
 export default Auth;

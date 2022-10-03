@@ -29,8 +29,8 @@ function Search() {
     <form onSubmit={handleForm}>
       <label htmlFor="filter">buscador</label>
       <input type="search" id="filter" name="filter"></input>
-      <button>
-        <img src={search} alt="Buscar" className="buscador" />
+      <button className="buscador">
+        <img src={search} alt="Buscar" className="iconoBuscador" />
       </button>
       {sending ? <p>Enviando formulario...</p> : null}
       {error ? <p>{error}</p> : null}

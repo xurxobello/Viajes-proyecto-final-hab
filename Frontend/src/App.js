@@ -15,6 +15,7 @@ import UserPage from "./pages/UserPage";
 import Search from "./components/Search";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { Formulario } from "./components/Formulario";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -36,7 +37,7 @@ function App() {
           <Route path="/aboutUs" element={<AboutUsPage></AboutUsPage>} />
 
           <Route path="/recommendations/:id" element={<RecommendationPage />} />
-          <Route path="/registro" element={<RegisterPage></RegisterPage>} />
+          <Route path="/registro" element={<Formulario></Formulario>} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
