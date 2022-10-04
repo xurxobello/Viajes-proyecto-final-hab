@@ -46,20 +46,18 @@ function Search() {
             placeholder="    Search your recommendation"
             style={style}
             type="text"
-            id="email_input"
-            name="email"
-            required
+            id="filter"
+            name="filter"
             onChange={(e) => setFilter(e.target.value)}
           ></input>
         </div>
         <div className="name">
-          <label htmlFor="email"></label>
           <label htmlFor="order"></label>
           <select
             placeholder="Filtros"
             style={style}
-            id="subject_inpu"
-            name="subjec"
+            id="order"
+            name="order"
             onChange={(e) => setOrder(e.target.value)}
           >
             <option value="date" defaultValue>

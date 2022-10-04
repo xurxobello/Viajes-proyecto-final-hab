@@ -19,6 +19,12 @@ function DetailRecommendation({ recommendation }) {
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const style = {
+    color: "blue",
+  };
+  const styleBorder = {
+    border: "solid 2px #474544",
+  };
 
   useEffect(() => {
     const getLikesData = async () => {
@@ -87,8 +93,8 @@ function DetailRecommendation({ recommendation }) {
   return !user ? (
     <>
       <article>
-        <h2>Título: {recommendation.title}</h2>
-        <p>Lugar: {recommendation.place}</p>
+        <h2>Title: {recommendation.title}</h2>
+        <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
           <img
             src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
@@ -96,7 +102,9 @@ function DetailRecommendation({ recommendation }) {
           />
         ) : null}
         <p className="contentDetail">{recommendation.content}</p>
-        <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
+        <p>
+          Created at: {new Date(recommendation.created_at).toLocaleString()}
+        </p>
         <p>👍{likes}</p>
       </article>
       <DetailUser id={recommendation.user_id} />
@@ -104,15 +112,15 @@ function DetailRecommendation({ recommendation }) {
   ) : (
     <>
       <article>
-        <p>Título: {recommendation.title}</p>
-        <p>Lugar: {recommendation.place}</p>
+        <p>Title: {recommendation.title}</p>
+        <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
           <img
             src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
             alt={recommendation.intro}
           />
         ) : null}
-        <p className="contentDetail">Contenido : {recommendation.content}</p>
+        <p className="contentDetail">Content : {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
 
         {/* En el caso de que el id del usuario coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}
@@ -128,7 +136,7 @@ function DetailRecommendation({ recommendation }) {
                 }
               }}
             >
-              Borrar recomendación
+              Delete recommendation
             </button>
             {error ? <p>{error}</p> : null}
           </section>
@@ -143,7 +151,7 @@ function DetailRecommendation({ recommendation }) {
 
       <form onSubmit={handleComment}>
         <fieldset>
-          <label htmlFor="content">Comentario: </label>
+          <label htmlFor="content">Comment: </label>
           <textarea
             type="text"
             onChange={(e) => setContent(e.target.value)}
@@ -153,17 +161,20 @@ function DetailRecommendation({ recommendation }) {
             rows="3"
           ></textarea>
         </fieldset>
-        <button>enviar</button>
+        <div className="submit">
+          <input type="submit" value="Comment" id="form_button1" />
+        </div>
       </form>
-      <ul>
+      <p>COMENTS</p>
+      <br></br>
+      <ul className="container">
         {comments.map((comment) => {
           return (
             <li key={comment.id}>
-              Creado por:{comment.nick}
-              Creado el:
-              {new Date(comment.created_at).toLocaleDateString()}
-              <br />
+              <p style={style}>Created by : {comment.nick}</p>
               {comment.content}
+              <br />
+              <br></br>
             </li>
           );
         })}

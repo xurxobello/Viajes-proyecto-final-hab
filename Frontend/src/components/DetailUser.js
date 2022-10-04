@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import useUser from "../hooks/useUser";
 const stylePerfil = {
-  borderRadius: "50%",
+  width: "150px",
+  height: "150px",
+  borderRadius: "100px",
+};
+const styleColor = {
+  color: "black",
 };
 
 function DetailUser({ id }) {
@@ -15,7 +20,7 @@ function DetailUser({ id }) {
   if (error) return <p>{error}</p>;
   return (
     <aside>
-      <NavLink to={`/user/${user.id}`}>
+      <NavLink style={styleColor} to={`/user/${user.id}`}>
         <h2>Sobre mi:</h2>
         <img
           style={stylePerfil}
