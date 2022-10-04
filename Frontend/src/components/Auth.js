@@ -1,22 +1,23 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import logo from "../fotos/logout.png";
+import logo from "../fotos/logout1.png";
 
 function Auth() {
   const { user, logout } = useContext(AuthContext);
 
   const style = {
     color: "black",
-    fontSize: "20px",
+    fontSize: "30px",
   };
 
   return user ? (
     <section>
       <NavLink style={style} to={`/user/${user.id}`}>
-        Usuario:
+        User:
         {user.name}
       </NavLink>
+      <br></br>
       <button onClick={() => logout()}>
         {" "}
         <img
@@ -28,7 +29,7 @@ function Auth() {
     </section>
   ) : (
     <NavLink to="/login" className="init">
-      Iniciar sesión
+      Login
     </NavLink>
   );
 }

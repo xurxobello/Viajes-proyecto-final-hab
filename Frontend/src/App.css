@@ -14,17 +14,16 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /*  background-image: url(/src/fotos/claro981.png);
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 .init {
   font-family: "Special Elite", cursive;
   color: black;
-  font-size: 20px;
+  font-size: 30px;
 }
 .init:hover {
   color: #96b7c4;
+  transform: scale();
+  font-size: 35px;
 }
 
 .errores {
@@ -83,8 +82,11 @@ main {
 }
 
 .logout {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
 }
 .header {
   margin-top: 5rem;
@@ -376,4 +378,22 @@ textarea {
 
 .contentDetail {
   font-family: "Raleway", sans-serif;
+}
+.imgRedonda {
+  margin-top: 70px;
+  margin-left: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+}
+.App {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+h3 {
+  text-align: start;
+  font-size: 30px;
+}
+.hiper {
+  color: #8a9497;
 }

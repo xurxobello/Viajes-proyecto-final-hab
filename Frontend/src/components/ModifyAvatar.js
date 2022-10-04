@@ -35,7 +35,7 @@ function ModifyAvatar() {
 
   return user && user.id === +id ? (
     <form onSubmit={handleForm}>
-      <label htmlFor="image">Añade un nuevo avatar: </label>
+      <label htmlFor="image">Change your avatar: </label>
       <input
         type="file"
         id="image"
@@ -45,9 +45,11 @@ function ModifyAvatar() {
         required
       />
 
-      {sending ? <p>Enviando formulario...</p> : null}
+      {sending ? <p>ESending form...</p> : null}
       {error ? <p>{error}</p> : null}
-      <button>Enviar avatar</button>
+      <div className="form_button1">
+        <input type="submit" value="Change avatar" id="form_button" />
+      </div>
     </form>
   ) : null;
 }

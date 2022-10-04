@@ -18,6 +18,7 @@ function HomePage() {
       <section>
         <h2>Descubre el próximo lugar al que viajar</h2>
         <Search></Search>
+        <h3>Last recommendations</h3>
         <RecommendationsList recommendations={recommendations} />
       </section>
     </main>

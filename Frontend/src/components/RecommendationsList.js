@@ -2,7 +2,6 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getAllRecommendationsService } from "../services";
 import Recommendation from "./Recommendation";
-import search from "../fotos/buscar.png";
 
 // creamos el componente RecommendationsList que recibe una prop con las recomendaciones
 function RecommendationsList({ recommendations }) {

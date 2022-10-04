@@ -9,6 +9,9 @@ function ModifyName() {
   const [name, setName] = useState("");
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
+  const style = {
+    border: "solid",
+  };
 
   // definimos la manera de gestionar el formulario
   const handleForm = async (e) => {
@@ -34,17 +37,20 @@ function ModifyName() {
 
   return user && user.id === +id ? (
     <section>
-      <p>Nombre: {user.name}</p>
       <form onSubmit={handleForm}>
-        <label htmlFor="name">Modificar nombre: </label>
+        <label htmlFor="name"> </label>
         <input
+          placeholder=" Change your name"
+          style={style}
           type="text"
           id="name"
           name="name"
           onChange={(e) => setName(e.target.value)}
           required
         ></input>
-        <button>Enviar</button>
+        <div className="submit">
+          <input type="submit" value="Change name" id="form_button" />
+        </div>
         {sending ? <p>Enviando formulario...</p> : null}
         {error ? <p>{error}</p> : null}
       </form>

@@ -6,6 +6,13 @@ import { UserRecommendations } from "../components/UserRecommendations";
 import useUser from "../hooks/useUser";
 
 function UserPage() {
+  const style = {
+    fontSize: "25px",
+    marginTop: "20px",
+  };
+  const styleLetra = {
+    fontSize: "25px",
+  };
   const { id } = useParams();
 
   // Importamos el Hook, que se encarga, entre otras cosas, de hacer una petición al API para obtener las información
@@ -20,22 +27,27 @@ function UserPage() {
     <main>
       <section>
         <h2>PAGINA DE USUARIO</h2>
+        <p style={style}>Nick: {user.nick}</p>
 
+        <p style={style}>Avatar:</p>
         <p>
-          Avatar:{" "}
           {user.avatar ? (
             <img
+              className="imgRedonda"
               src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
-              alt="Foto de perfil"
+              alt="No hay foto de perfil"
             />
           ) : null}
         </p>
+
         <ModifyAvatar />
+        <p style={styleLetra}>Name: {user.name}</p>
         <ModifyName />
-        <p>Apodo: {user.nick}</p>
-        <p>Sobre mi: {user.about_me}</p>
+        <p style={styleLetra}>About me: {user.about_me}</p>
         <ModifyAboutMe />
-        <p>Usuario desde: {new Date(user.created_at).toLocaleString()}</p>
+        <p style={styleLetra}>
+          User created: {new Date(user.created_at).toLocaleString()}
+        </p>
         <UserRecommendations id={user.id} />
       </section>
     </main>

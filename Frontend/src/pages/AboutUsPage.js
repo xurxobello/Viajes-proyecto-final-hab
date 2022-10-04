@@ -2,7 +2,7 @@ function AboutUsPage() {
   return (
     <main>
       <section className="aboutUs">
-        <h2>TEXTO FIJO INFORMACION PAGINA/CREADORES</h2>
+        <h2>Xurxo & Iván</h2>
         <p>
           {" "}
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu

@@ -9,6 +9,9 @@ function ModifyAboutMe() {
   const [about_me, setAbout_me] = useState("");
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
+  const style = {
+    border: "solid",
+  };
 
   // definimos la manera de gestionar el formulario
   const handleForm = async (e) => {
@@ -36,13 +39,17 @@ function ModifyAboutMe() {
       <form onSubmit={handleForm}>
         <label htmlFor="about_me">Modificar sobre mi: </label>
         <input
+          placeholder=" Change about you"
+          style={style}
           type="text"
           id="about_me"
           name="about_me"
           onChange={(e) => setAbout_me(e.target.value)}
           required
         ></input>
-        <button>Enviar</button>
+        <div className="submit">
+          <input type="submit" value="Change about you" id="form_button" />
+        </div>
         {sending ? <p>Enviando formulario...</p> : null}
         {error ? <p>{error}</p> : null}
       </form>

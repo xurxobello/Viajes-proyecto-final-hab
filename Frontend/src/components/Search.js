@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllRecommendationsService, getSearchService } from "../services";
+import RecommendationsList from "./RecommendationsList";
 
 function Search() {
   const [error, setError] = useState("");
@@ -29,6 +30,10 @@ function Search() {
     borderRadius: "10px",
     marginTop: "0.1rem",
   };
+  const stylePading = {
+    paddingRight: "100px",
+  };
+
   return (
     <div>
       <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
@@ -63,11 +68,11 @@ function Search() {
             <option value="votes"> Likes</option>
           </select>
         </div>
-        {error ? <p className="errores">{error}</p> : null}{" "}
-        {/* si existe un error,lo muestra,si no no hace nada */}
         <div className="submit">
           <input type="submit" value="Search" id="form_button1" />
         </div>
+        {error ? <p className="errores">{error}</p> : null}{" "}
+        {/* si existe un error,lo muestra,si no no hace nada */}
       </form>
     </div>
   );

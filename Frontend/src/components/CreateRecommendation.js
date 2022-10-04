@@ -48,8 +48,14 @@ function CreateRecommendation() {
     <div className="container">
       <form onSubmit={handleForm}>
         <div>
-          <label htmlFor="title">Título: </label>
-          <input type="text" id="title" name="title" required />
+          <label htmlFor="title">Title: </label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            required
+            placeholder="Title"
+          />
         </div>
         <div>
           <label htmlFor="category">Category:</label>
@@ -71,7 +77,13 @@ function CreateRecommendation() {
         </div>
         <div>
           <label htmlFor="place">Place: </label>
-          <input type="text" id="place" name="place" required />
+          <input
+            type="text"
+            id="place"
+            name="place"
+            required
+            placeholder="Place"
+          />
         </div>
         <div>
           <label htmlFor="intro">Introduction: </label>
@@ -79,13 +91,14 @@ function CreateRecommendation() {
             type="text"
             id="intro"
             name="intro"
-            placeholder="haz una breve descripción de la imagen"
+            placeholder="Introduction"
             required
           />
         </div>
         <div>
           <label htmlFor="content">Contain: </label>
           <textarea
+            placeholder="Contain"
             type="text"
             id="content"
             name="content"
