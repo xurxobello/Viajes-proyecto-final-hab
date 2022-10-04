@@ -1,4 +1,5 @@
 import RecommendationsList from "../components/RecommendationsList";
+import Search from "../components/Search";
 import useRecommendations from "../hooks/useRecommendations";
 
 function HomePage() {
@@ -16,6 +17,7 @@ function HomePage() {
     <main>
       <section>
         <h2>Descubre el próximo lugar al que viajar</h2>
+        <Search></Search>
         <RecommendationsList recommendations={recommendations} />
       </section>
     </main>

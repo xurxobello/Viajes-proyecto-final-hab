@@ -1,40 +1,75 @@
 import { useState } from "react";
-import { getSearchService } from "../services";
-import search from "../fotos/buscar.png";
+import { useNavigate } from "react-router-dom";
+import { getAllRecommendationsService, getSearchService } from "../services";
 
 function Search() {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [filter, setFilter] = useState("");
-
+  const [order, setOrder] = useState("date");
+  const navigate = useNavigate();
   const handleForm = async (e) => {
-    // no permitimos que se envíe el formulario de forma normal con e.preventDefault()
     e.preventDefault();
 
     try {
-      // en caso de que todo vaya bien indicamos que el estado de envío pase a true
       setSending(true);
 
-      // definimos la recomendación que esperará al envío del formulario a la base de datos, para lo que necesita data y token
-      await getSearchService({ filter });
+      const recommendations = await getAllRecommendationsService(filter, order);
+      console.log(recommendations);
+
+      navigate("/recommendations/filter");
     } catch (error) {
-      // en caso de que haya un error indicamos que nos facilite dicho error
       setError(error.message);
     } finally {
-      // cuando acabe, sea porque todo va bien o haya un error indicamos que el estado de envío pase a false
       setSending(false);
     }
   };
+  const style = {
+    border: "solid",
+    borderRadius: "10px",
+    marginTop: "0.1rem",
+  };
   return (
-    <form onSubmit={handleForm}>
-      <label htmlFor="filter">buscador</label>
-      <input type="search" id="filter" name="filter"></input>
-      <button className="buscador">
-        <img src={search} alt="Buscar" className="iconoBuscador" />
-      </button>
-      {sending ? <p>Enviando formulario...</p> : null}
-      {error ? <p>{error}</p> : null}
-    </form>
+    <div>
+      <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
+      <div className="underline"></div>
+
+      <form onSubmit={handleForm}>
+        <div className="name">
+          <label htmlFor="filter"></label>
+          <input
+            placeholder="    Search your recommendation"
+            style={style}
+            type="text"
+            id="email_input"
+            name="email"
+            required
+            onChange={(e) => setFilter(e.target.value)}
+          ></input>
+        </div>
+        <div className="name">
+          <label htmlFor="email"></label>
+          <label htmlFor="order"></label>
+          <select
+            placeholder="Filtros"
+            style={style}
+            id="subject_inpu"
+            name="subjec"
+            onChange={(e) => setOrder(e.target.value)}
+          >
+            <option value="date" defaultValue>
+              Date
+            </option>
+            <option value="votes"> Likes</option>
+          </select>
+        </div>
+        {error ? <p className="errores">{error}</p> : null}{" "}
+        {/* si existe un error,lo muestra,si no no hace nada */}
+        <div className="submit">
+          <input type="submit" value="Search" id="form_button1" />
+        </div>
+      </form>
+    </div>
   );
 }
 export default Search;
