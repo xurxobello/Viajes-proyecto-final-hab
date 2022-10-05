@@ -77,7 +77,13 @@ function CreateRecommendation() {
         </div>
         <div>
           <label htmlFor="place">Place: </label>
-          <input id="place" name="place" required placeholder="Place" />
+          <input
+            id="place"
+            name="place"
+            required
+            placeholder="Place"
+            type="text"
+          />
         </div>
         <div>
           <label htmlFor="intro">Introduction: </label>
@@ -93,7 +99,6 @@ function CreateRecommendation() {
           <label htmlFor="content">Contain: </label>
           <textarea
             placeholder="Contain"
-            type="text"
             id="content"
             name="content"
             cols="80"
