@@ -120,7 +120,7 @@ function DetailRecommendation({ recommendation }) {
             alt={recommendation.intro}
           />
         ) : null}
-        <p className="contentDetail">Content : {recommendation.content}</p>
+        <pre className="contentDetail">Content : {recommendation.content}</pre>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
 
         {/* En el caso de que el id del usuario coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}
@@ -172,7 +172,7 @@ function DetailRecommendation({ recommendation }) {
           return (
             <li key={comment.id}>
               <p style={style}>Created by : {comment.nick}</p>
-              {comment.content}
+              <pre>{comment.content}</pre>
               <br />
               <br></br>
             </li>

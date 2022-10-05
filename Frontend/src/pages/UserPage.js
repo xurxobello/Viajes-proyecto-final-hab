@@ -28,6 +28,9 @@ function UserPage() {
       <section>
         <h2>PAGINA DE USUARIO</h2>
         <p style={style}>Nick: {user.nick}</p>
+        <p style={styleLetra}>
+          User created: {new Date(user.created_at).toLocaleString()}
+        </p>
 
         <p style={style}>Avatar:</p>
         <p>
@@ -45,9 +48,6 @@ function UserPage() {
         <ModifyName />
         <p style={styleLetra}>About me: {user.about_me}</p>
         <ModifyAboutMe />
-        <p style={styleLetra}>
-          User created: {new Date(user.created_at).toLocaleString()}
-        </p>
         <UserRecommendations id={user.id} />
       </section>
     </main>

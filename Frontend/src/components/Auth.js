@@ -12,10 +12,9 @@ function Auth() {
         User: {user.name}
       </NavLink>
       <br></br>
-      <button onClick={() => logout()}>
+      <button className="logout" onClick={() => logout()}>
         {" "}
         <img
-          className="logout"
           src={logo}
           alt="Página no encontrada, haz click aquí para volver a la página principal"
         />

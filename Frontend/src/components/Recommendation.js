@@ -7,6 +7,7 @@ function Recommendation({ recommendation }) {
       <p>{new Date(recommendation.created_at).toLocaleDateString()}</p>
       {recommendation.photo ? (
         <img
+          className="imgRecommendation "
           src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
           alt={recommendation.intro}
         />

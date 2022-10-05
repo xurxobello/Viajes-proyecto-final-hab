@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getAllRecommendationsService } from "../services";
 import Recommendation from "./Recommendation";
 
@@ -8,7 +8,8 @@ function RecommendationsList({ recommendations, setRecommendations }) {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [filter, setFilter] = useState("");
-  const [order, setOrder] = useState("");
+  const [order, setOrder] = useState("date");
+  const { id } = useParams();
 
   const style = {
     border: "solid",
@@ -29,6 +30,7 @@ function RecommendationsList({ recommendations, setRecommendations }) {
 
       // definimos los datos recibidos como data que esperarán la respuesta de la base de datos, y pasamos filter y order por si decide pasar algun tipo de filtro en la búsqueda
       const data = await getAllRecommendationsService(filter, order);
+
       setRecommendations(data.recommendations);
       e.target.reset();
     } catch (error) {
@@ -42,43 +44,47 @@ function RecommendationsList({ recommendations, setRecommendations }) {
   // realizamos un ternario indicando que si hay recomendaciones las recorra haciendo un map y nos las facilite dentro de una lista y en caso de que no haya ninguna nos devuelva un mensaje indicándolo. Hacemos que cada li tenga una key única que sea la id de la recomendación y creamos un link que al hacer click en el lí nos lleve al detalle de esa recomendación en concreto
   return recommendations.length ? (
     <>
-      <div>
-        <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
-        <div className="underline"></div>
-        <form className="search" onSubmit={handleForm}>
-          <div className="name">
-            <label htmlFor="filter"></label>
-            <input
-              placeholder="Search"
-              style={style}
-              type="text"
-              id="filter"
-              name="filter"
-              onChange={(e) => setFilter(e.target.value)}
-            />
-          </div>
-          <div className="name">
-            <label htmlFor="order"></label>
-            <select
-              placeholder="Filtros"
-              style={style}
-              id="order"
-              name="order"
-              onChange={(e) => setOrder(e.target.value)}
-              required
-            >
-              <option value="date" defaultValue>
-                Date
-              </option>
-              <option value="votes"> Likes</option>
-            </select>
-          </div>
-          <div className="submit">
-            <input type="submit" value="Search" id="form_button1" />
-          </div>
-          {error ? <p className="errores">{error}</p> : null}{" "}
-        </form>
-      </div>
+      {!id ? (
+        <>
+          <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
+          <div className="underline"></div>
+          <form className="search" onSubmit={handleForm}>
+            <div className="name">
+              <label htmlFor="filter"></label>
+              <input
+                placeholder="Search"
+                style={style}
+                type="text"
+                id="filter"
+                name="filter"
+                onChange={(e) => setFilter(e.target.value)}
+              />
+            </div>
+            <div className="name">
+              <label htmlFor="order"></label>
+              <select
+                placeholder="Filtros"
+                style={style}
+                id="order"
+                name="order"
+                onChange={(e) => setOrder(e.target.value)}
+                required
+              >
+                <option value="date" defaultValue>
+                  Date
+                </option>
+                <option value="votes"> Likes</option>
+              </select>
+            </div>
+            <div className="submit">
+              <input type="submit" value="Search" id="form_button1" />
+            </div>
+            {error ? <p className="errores">{error}</p> : null}{" "}
+          </form>
+        </>
+      ) : null}
+      <h3 className="h3HomePage">Last recommendations</h3>
+
       <ul className="recommendationsList">
         {recommendations.map((recommendation) => {
           return (

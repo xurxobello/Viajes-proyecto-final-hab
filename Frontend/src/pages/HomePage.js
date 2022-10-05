@@ -18,7 +18,7 @@ function HomePage() {
       <section>
         <h2 className="h2HomePage">Descubre el próximo lugar al que viajar</h2>
         {/* <Search /> */}
-        <h3 className="h3HomePage">Last recommendations</h3>
+
         <RecommendationsList
           recommendations={recommendations}
           setRecommendations={setRecommendations}
