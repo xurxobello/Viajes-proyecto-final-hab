@@ -467,3 +467,17 @@ footer {
 #order {
   padding: 0.5rem;
 }
+
+/* .detailRecommendation {
+  width: 85%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 15rem;
+  grid-template-rows: 5rem 1fr 25rem 3rem 25rem;
+}
+.detailRecommendation > h2,
+form,
+p,
+ul {
+  grid-column: span 2;
+} */

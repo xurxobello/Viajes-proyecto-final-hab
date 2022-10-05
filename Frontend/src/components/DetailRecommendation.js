@@ -77,7 +77,7 @@ function DetailRecommendation({ recommendation }) {
     try {
       const newComment = await commentUserService({ id, content, token });
       e.target.reset();
-      setComments([...comments, { ...newComment, nick: user.nick }]);
+      setComments([{ ...newComment, nick: user.nick }, ...comments]);
     } catch (error) {}
   };
 
@@ -112,7 +112,7 @@ function DetailRecommendation({ recommendation }) {
   ) : (
     <>
       <article>
-        <p>Title: {recommendation.title}</p>
+        <h2>Title: {recommendation.title}</h2>
         <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
           <img
@@ -120,7 +120,7 @@ function DetailRecommendation({ recommendation }) {
             alt={recommendation.intro}
           />
         ) : null}
-        <pre className="contentDetail">Content : {recommendation.content}</pre>
+        <p className="contentDetail">Content : {recommendation.content}</p>
         <p>Creado el: {new Date(recommendation.created_at).toLocaleString()}</p>
 
         {/* En el caso de que el id del usuario coincida con el id del usuario que publicó la recomendación hacemos que aparezca un botón para poder eliminar la misma */}
@@ -165,14 +165,13 @@ function DetailRecommendation({ recommendation }) {
           <input type="submit" value="Comment" id="form_button1" />
         </div>
       </form>
-      <p>COMENTS</p>
-      <br></br>
+      <p>COMMENTS</p>
       <ul className="container">
         {comments.map((comment) => {
           return (
             <li key={comment.id}>
               <p style={style}>Created by : {comment.nick}</p>
-              <pre>{comment.content}</pre>
+              <p>{comment.content}</p>
               <br />
               <br></br>
             </li>
