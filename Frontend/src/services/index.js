@@ -57,7 +57,7 @@ export const getMyUserDataService = async ({ token }) => {
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
 export const getAllRecommendationsService = async (
   filter = "",
-  orderByLikes = ""
+  orderByLikes = "date"
 ) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${filter}&orderByLikes=${orderByLikes}`

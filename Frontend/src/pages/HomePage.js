@@ -1,10 +1,10 @@
 import RecommendationsList from "../components/RecommendationsList";
-import Search from "../components/Search";
 import useRecommendations from "../hooks/useRecommendations";
 
 function HomePage() {
   // Importamos el Hook useRecommendations, que se encarga, entre otras cosas, de hacer una petición al API para obtener las recomendaciones
-  const { recommendations, loading, error } = useRecommendations();
+  const { recommendations, setRecommendations, loading, error } =
+    useRecommendations();
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
   if (loading) return <p>Cargando recomendaciones...</p>;
@@ -16,10 +16,13 @@ function HomePage() {
   return (
     <main>
       <section>
-        <h2>Descubre el próximo lugar al que viajar</h2>
-        <Search></Search>
-        <h3>Last recommendations</h3>
-        <RecommendationsList recommendations={recommendations} />
+        <h2 className="h2HomePage">Descubre el próximo lugar al que viajar</h2>
+        {/* <Search /> */}
+        <h3 className="h3HomePage">Last recommendations</h3>
+        <RecommendationsList
+          recommendations={recommendations}
+          setRecommendations={setRecommendations}
+        />
       </section>
     </main>
   );

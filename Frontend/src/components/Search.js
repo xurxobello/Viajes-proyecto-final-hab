@@ -39,7 +39,7 @@ function Search() {
       <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
       <div className="underline"></div>
 
-      <form onSubmit={handleForm}>
+      <form className="search" onSubmit={handleForm}>
         <div className="name">
           <label htmlFor="filter"></label>
           <input
