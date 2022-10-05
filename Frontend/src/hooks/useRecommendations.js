@@ -9,8 +9,6 @@ function useRecommendations(id) {
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [filter, setFilter] = useState("");
-  const [order, setOrder] = useState("date");
 
   // Utilizamos useEffect para hacer una petición de las recomendaciones y sólo se ejecuta cuando el componente se cargue
   useEffect(() => {
@@ -23,7 +21,7 @@ function useRecommendations(id) {
         // recuperamos la información de la solicitud enviada a la base de datos, en el caso de recibir una id facilitamos las recomendaciones de un usuario, sino todas las recomendaciones
         const data = id
           ? await getAllUserRecommendationsService(id)
-          : await getAllRecommendationsService(filter, order);
+          : await getAllRecommendationsService();
 
         // si todo va bien nos devuelve las recomendaciones
         setRecommendations(data.recommendations);
@@ -41,6 +39,7 @@ function useRecommendations(id) {
 
   return {
     recommendations,
+    setRecommendations,
     loading,
     error,
   };

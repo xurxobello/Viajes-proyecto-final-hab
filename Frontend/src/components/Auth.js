@@ -6,16 +6,10 @@ import logo from "../fotos/logout1.png";
 function Auth() {
   const { user, logout } = useContext(AuthContext);
 
-  const style = {
-    color: "black",
-    fontSize: "30px",
-  };
-
   return user ? (
-    <section>
-      <NavLink style={style} to={`/user/${user.id}`}>
-        User:
-        {user.name}
+    <section className="userLoged">
+      <NavLink className="navToDetailUser" to={`/user/${user.id}`}>
+        User: {user.name}
       </NavLink>
       <br></br>
       <button onClick={() => logout()}>
@@ -28,9 +22,11 @@ function Auth() {
       </button>
     </section>
   ) : (
-    <NavLink to="/login" className="init">
-      Login
-    </NavLink>
+    <section className="userLoged">
+      <NavLink to="/login" className="init">
+        Login
+      </NavLink>
+    </section>
   );
 }
 export default Auth;

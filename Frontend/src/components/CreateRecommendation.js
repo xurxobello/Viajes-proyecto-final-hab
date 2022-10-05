@@ -77,13 +77,7 @@ function CreateRecommendation() {
         </div>
         <div>
           <label htmlFor="place">Place: </label>
-          <input
-            type="text"
-            id="place"
-            name="place"
-            required
-            placeholder="Place"
-          />
+          <input id="place" name="place" required placeholder="Place" />
         </div>
         <div>
           <label htmlFor="intro">Introduction: </label>
