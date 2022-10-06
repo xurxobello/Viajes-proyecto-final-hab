@@ -17,10 +17,10 @@ function MoreLikeRecommendation({ recommendation }) {
       ) : null}
       <p>Category: {recommendation.category}</p>
       <p>Introduction: {recommendation.intro}</p>
-      <p>
+      <div>
         <img id="corazon" src={corazon} alt="corazon" />
         <p>{recommendation.totalLikes}</p>
-      </p>
+      </div>
     </article>
   );
 }

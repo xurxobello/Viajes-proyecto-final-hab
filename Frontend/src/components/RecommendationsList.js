@@ -34,6 +34,7 @@ function RecommendationsList({ recommendations, setRecommendations }) {
       setRecommendations(data.recommendations);
       console.log(data.recommendations);
       e.target.reset();
+      setFilter("");
     } catch (error) {
       // en caso de que haya un error indicamos que nos facilite dicho error
       setError(error.message);
