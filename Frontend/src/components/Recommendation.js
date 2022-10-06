@@ -13,7 +13,7 @@ function Recommendation({ recommendation }) {
         />
       ) : null}
       <p>{recommendation.intro}</p>
-      <p>LEER MAS? ☑️</p>
+      <p>READ MORE? ☑️</p>
     </article>
   );
 }

@@ -63,16 +63,12 @@ function CreateRecommendation() {
             <option value="" hidden>
               Select...
             </option>
-            <option value="TurismoSolPlaya">Turismo de sol y playa</option>
-
-            <option value="TurismoRural">Turismo rural</option>
-            <option value="TurismoGastronómico">Turismo gastronómico</option>
-            <option value="TurismoNaturaleza">Turismo de naturaleza.</option>
-            <option value="TurismoCultural">Turismo cultural.</option>
-            <option value="Paisajes">Paisajes</option>
-            <option value="Monumentos">Monumentos</option>
-
-            <option value="Otros">Otros</option>
+            <option value="TurismoSolPlaya">Sun and beach tourism</option>
+            <option value="TurismoRural">Rural tourism</option>
+            <option value="TurismoGastronómico">Gastronomic tourism</option>
+            <option value="TurismoNaturaleza">Nature tourism</option>
+            <option value="TurismoCultural">Cultural tourism</option>
+            <option value="Otros">Others</option>
           </select>
         </div>
         <div>
@@ -111,7 +107,7 @@ function CreateRecommendation() {
             type="text"
             id="photo"
             name="photo"
-            placeholder="pon nombre a tu imagen"
+            placeholder="Name your image"
             required
           />
         </div>

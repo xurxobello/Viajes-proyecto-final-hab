@@ -14,14 +14,18 @@ function DetailUser({ id }) {
   const { user, loading, error } = useUser(id);
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
-  if (loading) return <p>Cargando datos de usuario...</p>;
+  if (loading) return <p>Loading...</p>;
 
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
   return (
     <aside>
-      <NavLink style={styleColor} to={`/user/${user.id}`}>
-        <h2>Sobre mi:</h2>
+      <NavLink
+        className="detailRecommendation2"
+        style={styleColor}
+        to={`/user/${user.id}`}
+      >
+        <h2>About me:</h2>
         <img
           style={stylePerfil}
           src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}

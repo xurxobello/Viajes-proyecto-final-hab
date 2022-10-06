@@ -46,7 +46,7 @@ function RecommendationsList({ recommendations, setRecommendations }) {
     <>
       {!id ? (
         <>
-          <h2 className="tituloFormLogin">&bull; BUSCADOR &bull;</h2>
+          <h2 className="tituloFormLogin">&bull; SEARCH &bull;</h2>
           <div className="underline"></div>
           <form className="search" onSubmit={handleForm}>
             <div className="name">
@@ -83,7 +83,7 @@ function RecommendationsList({ recommendations, setRecommendations }) {
           </form>
         </>
       ) : null}
-      <h3 className="h3HomePage">Last recommendations</h3>
+      <h3 className="h3HomePage">Recommendations</h3>
 
       <ul className="recommendationsList">
         {recommendations.map((recommendation) => {
@@ -103,7 +103,7 @@ function RecommendationsList({ recommendations, setRecommendations }) {
       {error ? <p>{error}</p> : null}
     </>
   ) : (
-    <p>Todavía no hay recomendaciones...</p>
+    <p className="noRecom">No recommendations yet...</p>
   );
 }
 export default RecommendationsList;

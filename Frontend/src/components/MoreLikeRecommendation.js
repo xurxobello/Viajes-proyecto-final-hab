@@ -9,6 +9,7 @@ function MoreLikeRecommendation({ recommendation }) {
       <p style={style}>{recommendation.title}</p>
       {recommendation.photo ? (
         <img
+          className="imgRecommendation"
           src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
           alt={recommendation.intro}
         />

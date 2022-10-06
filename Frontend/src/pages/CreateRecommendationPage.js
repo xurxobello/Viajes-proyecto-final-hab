@@ -20,12 +20,12 @@ function CreateRecommendationPage() {
           <CreateRecommendation />
         ) : (
           <p style={style}>
-            Debes estar logado para poder crear una recomendación, haz click
+            You must be logged in to create a recommendation, click
             <NavLink to="/login" className={"hiper"}>
               {" "}
-              aquí{" "}
+              here{" "}
             </NavLink>
-            para logarte.
+            to log in.
           </p>
         )}
       </section>
