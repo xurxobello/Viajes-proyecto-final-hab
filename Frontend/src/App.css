@@ -598,4 +598,27 @@ ul {
     margin-bottom: 5rem;
     margin-top: 5rem;
   }
+  .header {
+    width: 40%;
+    height: 40%;
+  }
+  .logo {
+    width: 10%;
+  }
+  .icon {
+    width: 15%;
+    height: 15%;
+  }
+  #aboutUs {
+    padding: 0 200px;
+    font-family: "Raleway", sans-serif;
+  }
+}
+#corazon {
+  width: 10%;
+  height: 10%;
+  display: inline-block;
+}
+#aboutUs {
+  font-family: "Raleway", sans-serif;
 }

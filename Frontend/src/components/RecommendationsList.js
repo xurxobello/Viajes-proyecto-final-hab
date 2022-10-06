@@ -103,7 +103,9 @@ function RecommendationsList({ recommendations, setRecommendations }) {
       {error ? <p>{error}</p> : null}
     </>
   ) : (
-    <p className="noRecom">No recommendations yet...</p>
+    <>
+      <p className="noRecom">No recommendations yet...</p>
+    </>
   );
 }
 export default RecommendationsList;

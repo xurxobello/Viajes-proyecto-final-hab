@@ -3,7 +3,7 @@ function AboutUsPage() {
     <main>
       <section className="aboutUs">
         <h2>Xurxo & Iván</h2>
-        <p>
+        <p id="aboutUs">
           {" "}
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu
           sodales magna. Sed feugiat nunc arcu. Vestibulum vel nunc vel quam

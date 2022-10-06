@@ -1,3 +1,4 @@
+import corazon from "../fotos/corazon.svg";
 function MoreLikeRecommendation({ recommendation }) {
   const style = {
     fontSize: "20px",
@@ -16,7 +17,10 @@ function MoreLikeRecommendation({ recommendation }) {
       ) : null}
       <p>Category: {recommendation.category}</p>
       <p>Introduction: {recommendation.intro}</p>
-      <p>Likes: {recommendation.totalLikes}</p>
+      <p>
+        <img id="corazon" src={corazon} alt="corazon" />
+        <p>{recommendation.totalLikes}</p>
+      </p>
     </article>
   );
 }

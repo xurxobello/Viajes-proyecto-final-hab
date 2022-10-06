@@ -168,19 +168,21 @@ function DetailRecommendation({ recommendation }) {
           <input type="submit" value="Comment" id="form_button1" />
         </div>
       </form>
-      <p>COMMENTS</p>
-      <ul className="container">
-        {comments.map((comment) => {
-          return (
-            <li key={comment.id}>
-              <p style={style}>Created by : {comment.nick}</p>
-              <p>{comment.content}</p>
-              <br />
-              <br></br>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="divCom">
+        <p>COMMENTS</p>
+        <ul className="container">
+          {comments.map((comment) => {
+            return (
+              <li key={comment.id}>
+                <p style={style}>Created by : {comment.nick}</p>
+                <p>{comment.content}</p>
+                <br />
+                <br></br>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </>
   );
 }
