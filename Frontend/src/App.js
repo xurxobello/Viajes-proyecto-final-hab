@@ -12,11 +12,9 @@ import CreateRecommendationPage from "./pages/CreateRecommendationPage";
 import MoreLikesPage from "./pages/MoreLikesPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import UserPage from "./pages/UserPage";
-import Search from "./components/Search";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { Formulario } from "./components/Formulario";
-import FilterPage from "./pages/FilterPage";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -33,13 +31,12 @@ function App() {
             path="/newRecommendation"
             element={<CreateRecommendationPage></CreateRecommendationPage>}
           />
-          <Route path="/recommendations/filter" element={<FilterPage />} />
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/moreLikes" element={<MoreLikesPage></MoreLikesPage>} />
           <Route path="/aboutUs" element={<AboutUsPage></AboutUsPage>} />
 
           <Route path="/recommendations/:id" element={<RecommendationPage />} />
-          <Route path="/registro" element={<Formulario></Formulario>} />
+          <Route path="/register" element={<Formulario></Formulario>} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

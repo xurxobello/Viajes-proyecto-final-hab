@@ -7,7 +7,7 @@ function HomePage() {
     useRecommendations();
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
-  if (loading) return <p>Cargando recomendaciones...</p>;
+  if (loading) return <p>Loading...</p>;
 
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
@@ -16,9 +16,7 @@ function HomePage() {
   return (
     <main>
       <section>
-        <h2 className="h2HomePage">Descubre el próximo lugar al que viajar</h2>
-        {/* <Search /> */}
-
+        <h2 className="h2HomePage">Discover the next place to travel</h2>
         <RecommendationsList
           recommendations={recommendations}
           setRecommendations={setRecommendations}

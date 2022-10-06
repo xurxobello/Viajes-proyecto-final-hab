@@ -92,7 +92,7 @@ function DetailRecommendation({ recommendation }) {
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos
   return !user ? (
     <>
-      <article>
+      <article className="detailRecommendation2">
         <h2>Title: {recommendation.title}</h2>
         <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
@@ -112,7 +112,7 @@ function DetailRecommendation({ recommendation }) {
     </>
   ) : (
     <>
-      <article>
+      <article className="detailRecommendation2">
         <h2>Title: {recommendation.title}</h2>
         <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
@@ -132,7 +132,7 @@ function DetailRecommendation({ recommendation }) {
             <button
               id="form_button1"
               onClick={() => {
-                if (window.confirm("¿Quieres eliminar la recomendación?"))
+                if (window.confirm("Do you want to remove the recommendation?"))
                   deleteRecommendation(recommendation.id);
                 // indicamos que si la recomendación se borra navegue a la web principal donde se verá ya publicada dicha recomendación
                 if (deleteRecommendation) {
@@ -153,7 +153,7 @@ function DetailRecommendation({ recommendation }) {
 
       <DetailUser id={recommendation.user_id} />
 
-      <form onSubmit={handleComment}>
+      <form className="formDetailRecom" onSubmit={handleComment}>
         <fieldset>
           <label htmlFor="content">Comment: </label>
           <textarea

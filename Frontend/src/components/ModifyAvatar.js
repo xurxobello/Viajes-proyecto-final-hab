@@ -34,7 +34,7 @@ function ModifyAvatar() {
   };
 
   return user && user.id === +id ? (
-    <form onSubmit={handleForm}>
+    <form className="formModifyAvatar" onSubmit={handleForm}>
       <label htmlFor="image">Change your avatar: </label>
       <input
         type="file"

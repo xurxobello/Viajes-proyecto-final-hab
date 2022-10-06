@@ -6,7 +6,7 @@ function MoreLikesPage() {
   const { recommendations, loading, error } = useMoreLikesRecommendations();
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
-  if (loading) return <p>Cargando recomendaciones...</p>;
+  if (loading) return <p>Loading...</p>;
 
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
@@ -15,7 +15,7 @@ function MoreLikesPage() {
   return (
     <main>
       <section>
-        <h2>RECOMENDACIONES CON MAS LIKES</h2>
+        <h2>RECOMMENDATIONS WITH MORE LIKES</h2>
         <MoreLikesRecommendationsList recommendations={recommendations} />
       </section>
     </main>

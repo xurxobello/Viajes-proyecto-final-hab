@@ -152,21 +152,6 @@ export const getAllCommentsService = async ({ id }) => {
   return json.data;
 };
 
-export const getSearchService = async (filter) => {
-  //peticion a la bd para detalles del usuario-->id,nick email...
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${filter}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  const json = await response.json();
-
-  return json.data;
-};
 export const likeService = async ({ token, id }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/recommendations/${id}/likes`,

@@ -37,7 +37,7 @@ function ModifyName() {
 
   return user && user.id === +id ? (
     <section>
-      <form onSubmit={handleForm}>
+      <form className="formModifyName" onSubmit={handleForm}>
         <label htmlFor="name"> </label>
         <input
           placeholder=" Change your name"

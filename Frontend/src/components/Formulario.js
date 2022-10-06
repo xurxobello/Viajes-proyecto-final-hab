@@ -29,7 +29,7 @@ export const Formulario = () => {
   return (
     <>
       <div id="container">
-        <h1 className=" tituloFormRegister">&bull; REGISTRATION &bull;</h1>
+        <h2 className=" titleFormRegister">&bull; REGISTRATION &bull;</h2>
         <div className="underline"></div>
         <div className="icon_wrapper">
           <img
@@ -94,7 +94,6 @@ export const Formulario = () => {
               onChange={(e) => setNickName(e.target.value)}
             ></input>
           </div>
-
           <div className="message">
             <label htmlFor="message"></label>
             <textarea

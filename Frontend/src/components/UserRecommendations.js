@@ -3,12 +3,9 @@ import RecommendationsList from "./RecommendationsList";
 
 export const UserRecommendations = ({ id }) => {
   const { recommendations, loading, error } = useRecommendations(id);
-  const style = {
-    marginTop: "20px",
-  };
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
-  if (loading) return <p>Cargando recomendaciones...</p>;
+  if (loading) return <p>Loading...</p>;
 
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
@@ -17,7 +14,6 @@ export const UserRecommendations = ({ id }) => {
   return (
     <>
       <section>
-        <h2 style={style}>Your recommendations</h2>
         <RecommendationsList recommendations={recommendations} />
       </section>
     </>

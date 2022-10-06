@@ -36,8 +36,8 @@ function ModifyAboutMe() {
 
   return user && user.id === +id ? (
     <section>
-      <form onSubmit={handleForm}>
-        <label htmlFor="about_me">Modificar sobre mi: </label>
+      <form className="formModifyAboutMe" onSubmit={handleForm}>
+        <label htmlFor="about_me">Change about me: </label>
         <input
           placeholder=" Change about you"
           style={style}

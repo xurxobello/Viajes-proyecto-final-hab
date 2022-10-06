@@ -9,7 +9,7 @@ function RecommendationPage() {
   const { recommendation, loading, error } = useRecommendation(id);
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
-  if (loading) return <p>Cargando recomendación...</p>;
+  if (loading) return <p>Loading...</p>;
 
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
@@ -18,7 +18,7 @@ function RecommendationPage() {
   return (
     <main>
       <section className="detailRecommendation">
-        <h2>Recomendación</h2>
+        <h2>Recomendation</h2>
         <DetailRecommendation recommendation={recommendation} />
       </section>
     </main>

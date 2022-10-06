@@ -91,7 +91,7 @@ function RegisterPage() {
               onChange={(e) => setAbout(e.target.value)} //cuando cambie actualiza el estado con el valor del formulario con target.value
             ></input>
           </fieldset>
-          <button>registrate</button>
+          <button>Sign up</button>
           {error ? <p className="errores">{error}</p> : null}{" "}
           {/* si existe un error,lo muestra,si no no hace nada */}
         </form>

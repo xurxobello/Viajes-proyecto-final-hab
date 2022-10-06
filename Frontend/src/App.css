@@ -32,6 +32,7 @@
   font-size: 20px;
 }
 .h3HomePage {
+  padding-top: 3rem;
   font-size: 23px;
   text-align: center;
 }
@@ -60,11 +61,11 @@ a:active {
 }
 .recommendationsList {
   padding-top: 2rem;
-  width: 85%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 350 */
-  gap: 8rem;
+  /* gap: 8rem; */
+  gap: 2rem;
 }
 
 li {
@@ -81,11 +82,20 @@ img {
   max-width: 100%;
 }
 
+.imgRecommendation {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 0 -1.5rem;
+}
+
 main {
   flex-grow: 1;
+  width: 85%;
+  margin: 0 auto;
 }
 #mainCreate {
-  max-width: 800px;
+  max-width: 350px;
   margin: auto;
 }
 
@@ -109,10 +119,16 @@ main {
   background-color: transparent;
   border-radius: 50%;
 }
+.logo {
+  /*   width: 10rem;
+  height: 10rem; */
+  width: 15%;
+  padding-top: 1.5rem;
+}
 .header {
   /* margin-top: 5rem; */
-  width: 80%;
-  height: 80%;
+  width: 65%;
+  height: 65%;
 }
 .userLoged {
   padding-top: 1rem;
@@ -120,13 +136,6 @@ main {
 .navToDetailUser {
   color: black;
   font-size: 20px;
-}
-.logo {
-  /*   width: 10rem;
-  height: 10rem; */
-  width: 18%;
-  height: 18%;
-  padding-top: 1rem;
 }
 .iconoBuscador {
   width: 50px;
@@ -168,7 +177,7 @@ textarea {
 
 #container {
   border: solid 3px #474544;
-  max-width: 768px;
+  width: 768px;
   margin: 60px auto;
   position: relative;
 }
@@ -178,13 +187,14 @@ form {
   margin: 50px 0;
 }
 
-h1 {
+.titleFormRegister {
   color: #474544;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 7px;
   text-align: center;
   text-transform: uppercase;
+  margin-top: 15px;
 }
 
 .underline {
@@ -251,12 +261,13 @@ textarea:focus {
 .message {
   float: none;
 }
-.search {
-  margin: 0;
-}
+
 .name {
   float: left;
   width: 45%;
+}
+.formLoginPage {
+  padding: 2.5rem 1rem;
 }
 
 select {
@@ -304,6 +315,10 @@ textarea {
   color: #474544;
 }
 
+#contact_form {
+  padding: 2.5rem 1rem;
+}
+
 #form_button {
   background: none;
   border: solid 2px #474544;
@@ -331,12 +346,12 @@ textarea {
 @media screen and (max-width: 768px) {
   #container {
     margin: 20px auto;
-    width: 95%;
+    max-width: 95%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  h1 {
+  .titleFormRegister {
     font-size: 26px;
   }
 
@@ -350,7 +365,7 @@ textarea {
 }
 
 @media screen and (max-width: 420px) {
-  h1 {
+  .titleFormRegister {
     font-size: 18px;
   }
 
@@ -370,9 +385,6 @@ textarea {
   textarea {
     font-size: 0.875em;
   }
-}
-.tituloFormRegister {
-  margin-top: 15px;
 }
 .tituloFormLogin {
   margin-top: 2rem;
@@ -416,14 +428,40 @@ textarea {
   font-family: "Raleway", sans-serif;
   font-size: 18px;
 }
+.userData {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .imgRedonda {
-  margin-top: 70px;
-  margin-left: 30px;
+  margin-top: 20px;
   width: 150px;
   height: 150px;
-  border-radius: 100px;
+  border-radius: 75px;
+  align-self: center;
 }
-
+.formModifyAvatar {
+  margin: 0;
+}
+#image {
+  margin-bottom: 26.25px;
+}
+.userName {
+  padding-top: 2rem;
+}
+.formModifyName {
+  margin: 0;
+  padding: 30px;
+}
+.userAboutMe {
+  padding-top: 2rem;
+}
+.formModifyAboutMe {
+  margin: 0;
+  padding: 30px;
+}
 h3 {
   text-align: start;
   font-size: 30px;
@@ -449,15 +487,11 @@ footer {
     padding: 0;
   }
 } */
-.imgRecommendation {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  margin: 0 -1.5rem;
-}
+
 .search {
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
+  padding: 2.5rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -467,6 +501,22 @@ footer {
 }
 #order {
   padding: 0.5rem;
+}
+.noRecom {
+  padding-top: 3rem;
+}
+.detailRecommendation {
+  display: grid;
+  gap: 3rem;
+}
+.detailRecommendation2 > h2,
+.detailRecommendation2 > p,
+.detailRecommendation2 > div {
+  padding: 0.5rem;
+}
+.formDetailRecom {
+  margin: 0;
+  padding: 1rem;
 }
 
 /* .detailRecommendation {
@@ -482,3 +532,70 @@ p,
 ul {
   grid-column: span 2;
 } */
+
+@media (min-width: 450px) {
+  .navegador {
+    gap: 0.9rem;
+    font-size: 19px;
+    font-family: "Special Elite", cursive;
+    /* margin-bottom: 5rem;
+  margin-top: 5rem; */
+    margin-bottom: 3.5rem;
+    margin-top: 3.5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  #contact_form {
+    padding: 2.5rem;
+  }
+  .recommendationsList {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 350 */
+    gap: 2.2rem;
+  }
+  .imgRecommendation {
+    height: 250px;
+  }
+  #mainCreate {
+    max-width: 500px;
+  }
+  .navToDetailUser {
+    font-size: 25px;
+  }
+  .navegador {
+    /* gap: 5rem */
+    gap: 1.5rem;
+    font-size: 25px;
+    font-family: "Special Elite", cursive;
+    /* margin-bottom: 5rem;
+  margin-top: 5rem; */
+    margin-bottom: 3.5rem;
+    margin-top: 3.5rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .recommendationsList {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 350 */
+    gap: 7rem;
+  }
+  .imgRecommendation {
+    height: 300px;
+  }
+  #mainCreate {
+    max-width: 800px;
+  }
+  .navToDetailUser {
+    font-size: 30px;
+  }
+  .navegador {
+    /* gap: 5rem */
+    gap: 5rem;
+    font-size: 30px;
+    font-family: "Special Elite", cursive;
+    /* margin-bottom: 5rem;
+  margin-top: 5rem; */
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+  }
+}

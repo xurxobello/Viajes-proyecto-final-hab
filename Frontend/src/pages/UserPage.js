@@ -19,37 +19,39 @@ function UserPage() {
   const { user, loading, error } = useUser(id);
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
-  if (loading) return <p>Cargando datos de usuario...</p>;
+  if (loading) return <p>Loading...</p>;
 
   // indicamos que si hay un error nos devuelva el error
   if (error) return <p>{error}</p>;
   return (
     <main>
-      <section>
-        <h2>PAGINA DE USUARIO</h2>
+      <section className="userData">
+        <h2>USER PAGE</h2>
         <p style={style}>Nick: {user.nick}</p>
         <p style={styleLetra}>
           User created: {new Date(user.created_at).toLocaleString()}
         </p>
 
         <p style={style}>Avatar:</p>
-        <p>
-          {user.avatar ? (
-            <img
-              className="imgRedonda"
-              src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
-              alt="No hay foto de perfil"
-            />
-          ) : null}
-        </p>
+        {user.avatar ? (
+          <img
+            className="imgRedonda"
+            src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
+            alt="No hay foto de perfil"
+          />
+        ) : null}
 
         <ModifyAvatar />
-        <p style={styleLetra}>Name: {user.name}</p>
+        <p className="userName" style={styleLetra}>
+          Name: {user.name}
+        </p>
         <ModifyName />
-        <p style={styleLetra}>About me: {user.about_me}</p>
+        <p className="userAboutMe" style={styleLetra}>
+          About me: {user.about_me}
+        </p>
         <ModifyAboutMe />
-        <UserRecommendations id={user.id} />
       </section>
+      <UserRecommendations id={user.id} />
     </main>
   );
 }

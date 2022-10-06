@@ -23,7 +23,7 @@ function MoreLikesRecommendationsList({ recommendations }) {
       })}
     </ul>
   ) : (
-    <p>Todavía no hay recomendaciones...</p>
+    <p className="noRecom">No recommendations yet...</p>
   );
 }
 export default MoreLikesRecommendationsList;

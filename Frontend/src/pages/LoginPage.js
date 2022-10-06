@@ -24,7 +24,7 @@ export const LoginPage = () => {
         <div id="container">
           <h2 className="tituloFormLogin">&bull; LOGIN &bull;</h2>
           <div className="underline"></div>
-          <form onSubmit={handleLog}>
+          <form className="formLoginPage" onSubmit={handleLog}>
             <div className="email">
               <label htmlFor="email"></label>
               <input
@@ -39,7 +39,7 @@ export const LoginPage = () => {
             <div className="name">
               <label htmlFor="email"></label>
               <input
-                placeholder="Name"
+                placeholder="Email"
                 type="email"
                 id="password"
                 name="password"
@@ -55,8 +55,8 @@ export const LoginPage = () => {
           </form>
         </div>
         <p>
-          <NavLink className="buttonRegister" to="/registro">
-            Regístrate
+          <NavLink className="buttonRegister" to="/register">
+            Sign up
           </NavLink>
         </p>
       </section>
