@@ -2,7 +2,7 @@ function Recommendation({ recommendation }) {
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos, en este caso la foto, la categoría y una introducción.
   return (
     <article className="resumeRecommendation">
-      <h2>{recommendation.title}</h2>
+      <h2 id="titleRecom">{recommendation.title}</h2>
 
       <p>{new Date(recommendation.created_at).toLocaleDateString()}</p>
       {recommendation.photo ? (

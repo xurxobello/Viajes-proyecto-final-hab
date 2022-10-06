@@ -32,6 +32,7 @@ function RecommendationsList({ recommendations, setRecommendations }) {
       const data = await getAllRecommendationsService(filter, order);
 
       setRecommendations(data.recommendations);
+      console.log(data.recommendations);
       e.target.reset();
     } catch (error) {
       // en caso de que haya un error indicamos que nos facilite dicho error
@@ -104,7 +105,40 @@ function RecommendationsList({ recommendations, setRecommendations }) {
     </>
   ) : (
     <>
-      <p className="noRecom">No recommendations yet...</p>
+      <form className="search" onSubmit={handleForm}>
+        <div className="name">
+          <label htmlFor="filter"></label>
+          <input
+            placeholder="Search"
+            style={style}
+            type="text"
+            id="filter"
+            name="filter"
+            onChange={(e) => setFilter(e.target.value)}
+          />
+        </div>
+        <div className="name">
+          <label htmlFor="order"></label>
+          <select
+            placeholder="Filtros"
+            style={style}
+            id="order"
+            name="order"
+            onChange={(e) => setOrder(e.target.value)}
+            required
+          >
+            <option value="date" defaultValue>
+              Date
+            </option>
+            <option value="votes"> Likes</option>
+          </select>
+        </div>
+        <div className="submit">
+          <input type="submit" value="Search" id="form_button1" />
+        </div>
+        {error ? <p className="errores">{error}</p> : null}{" "}
+      </form>
+      <p className="noRecom">No recommendations yet... Try new search</p>
     </>
   );
 }

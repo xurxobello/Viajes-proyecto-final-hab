@@ -51,47 +51,47 @@ export const Formulario = () => {
             ></input>
           </div>
           <div className="email">
+            <label htmlFor="nick"></label>
+            <input
+              type="text"
+              placeholder="My nick is"
+              name="nick"
+              id="nick_input"
+              required
+              onChange={(e) => setNickName(e.target.value)}
+            ></input>
+          </div>
+          <div>
             <label htmlFor="email"></label>
             <input
               type="email"
-              placeholder="My e-mail is"
+              placeholder="Email"
               name="email"
               id="email_input"
               required
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
-          <div className="telephone">
-            <label htmlFor="name"></label>
-            <input
-              type="password"
-              placeholder="Password"
-              name="telephone"
-              id="telephone_input"
-              required
-              onChange={(e) => setPass(e.target.value)}
-            ></input>
-          </div>
           <div className="name">
             <label htmlFor="name"></label>
             <input
               type="password"
-              placeholder="Repeat password"
+              placeholder="Password"
               name="name"
               id="name_input"
               required
-              onChange={(e) => setPassRepeat(e.target.value)}
+              onChange={(e) => setPass(e.target.value)}
             ></input>
           </div>
           <div className="email">
-            <label htmlFor="email"></label>
+            <label htmlFor="repeatPass"></label>
             <input
-              type="text"
-              placeholder="Nick"
-              name="email"
-              id="email_input"
+              type="password"
+              placeholder="Repeat password"
+              name="repeatPass"
+              id="repeat_passinput"
               required
-              onChange={(e) => setNickName(e.target.value)}
+              onChange={(e) => setPassRepeat(e.target.value)}
             ></input>
           </div>
           <div className="message">

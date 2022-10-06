@@ -286,7 +286,7 @@ select::-ms-expand {
   width: 100%;
 }
 
-.telephone {
+.emailLargo {
   width: 100%;
 }
 
@@ -621,4 +621,7 @@ ul {
 }
 #aboutUs {
   font-family: "Raleway", sans-serif;
+}
+#titleRecom {
+  text-transform: uppercase;
 }
