@@ -9,14 +9,17 @@ export const LoginPage = () => {
   const [error, setError] = useState("");
   const { login } = useContext(AuthContext); //asi se llama al contexto, desestructuramos el login,se llama al useContext(es asi y punto) y llamamos al objeto global creado en el context
   const navigate = useNavigate();
+
   const handleLog = async (e) => {
     e.preventDefault();
-    setError("");
+    /* setError(""); */
     try {
       const data = await loginUserService({ email, password }); //en data esta el token
       login(data); //esto me mete el token en el localStorage
       navigate("/"); //cuando se ejecuta el evento te manda a la pagina pricipal
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message);
+    }
   };
   return (
     <main>

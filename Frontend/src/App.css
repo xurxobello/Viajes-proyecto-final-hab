@@ -105,6 +105,7 @@ main {
   background-position: center;
   background-size: cover;
   padding: 1.5rem 0;
+  overflow: hidden;
   /* border-radius: 20px; */
   box-shadow: 0px 0px 20px rgb(110, 110, 110);
   height: 100%;
@@ -516,6 +517,9 @@ footer {
   display: grid;
   gap: 3rem;
 }
+.detailRecommendation2 {
+  overflow: auto;
+}
 .detailRecommendation2 > h2,
 .detailRecommendation2 > p,
 .detailRecommendation2 > div {
@@ -635,4 +639,7 @@ ul {
 html {
   background-image: url(../src/fotos/fondolimpio2.png);
   background-repeat: repeat;
+}
+.divCom {
+  overflow: auto;
 }

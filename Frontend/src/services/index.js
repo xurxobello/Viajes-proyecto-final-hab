@@ -33,7 +33,12 @@ export const loginUserService = async ({ email, password }) => {
     body: JSON.stringify({ email, password }),
   });
   const json = await response.json();
-  //pendiente de meterle un error si no deja crearla
+
+  // gestionamos que debemos hacer en caso de que vuelva un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
   return json.accessToken;
 };
 
@@ -57,10 +62,11 @@ export const getMyUserDataService = async ({ token }) => {
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
 export const getAllRecommendationsService = async (
   filter = "",
-  orderByLikes = "date"
+  orderByLikes = "date",
+  page = 1
 ) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${filter}&orderByLikes=${orderByLikes}`
+    `${process.env.REACT_APP_BACKEND}/api/recommendations?filter=${filter}&orderByLikes=${orderByLikes}&page=${page}`
   );
   // gestionamos la respuesta de la base de datos transformándola a json
   const json = await response.json();

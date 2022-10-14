@@ -170,6 +170,8 @@ function DetailRecommendation({ recommendation }) {
       </form>
       <div className="divCom">
         <p>COMMENTS</p>
+        <br />
+        <br />
         <ul className="container">
           {comments.map((comment) => {
             return (
@@ -177,7 +179,7 @@ function DetailRecommendation({ recommendation }) {
                 <p style={style}>Created by : {comment.nick}</p>
                 <p>{comment.content}</p>
                 <br />
-                <br></br>
+                <br />
               </li>
             );
           })}

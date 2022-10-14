@@ -9,6 +9,8 @@ function useRecommendations(id) {
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [next, setNext] = useState(null);
+  const [prev, setPrev] = useState(null);
 
   // Utilizamos useEffect para hacer una petición de las recomendaciones y sólo se ejecuta cuando el componente se cargue
   useEffect(() => {
@@ -24,7 +26,10 @@ function useRecommendations(id) {
           : await getAllRecommendationsService();
 
         // si todo va bien nos devuelve las recomendaciones
+        console.log(data);
         setRecommendations(data.recommendations);
+        setNext(data.next);
+        setPrev(data.prev);
       } catch (error) {
         // si da un error nos devuelve el mensaje del error
         setError(error.message);
@@ -40,6 +45,8 @@ function useRecommendations(id) {
   return {
     recommendations,
     setRecommendations,
+    next,
+    prev,
     loading,
     error,
   };
