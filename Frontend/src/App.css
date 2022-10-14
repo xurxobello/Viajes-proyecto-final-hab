@@ -10,7 +10,7 @@
 .App {
   text-align: center;
   font-family: "Special Elite", cursive, sans-serif;
-  background-color: #ececec;
+  /* background-color: #ececec; */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -100,14 +100,20 @@ main {
 }
 
 .resumeRecommendation {
-  background-color: rgb(184, 184, 184);
+  /*  background-color: rgb(184, 184, 184); */
+  background-image: url(../src/fotos/claro981.png);
+  background-position: center;
+  background-size: cover;
   padding: 1.5rem 0;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   box-shadow: 0px 0px 20px rgb(110, 110, 110);
   height: 100%;
 }
 .resumeRecommendation > *:not(img) {
   padding: 0 1.5rem;
+}
+.resumeRecommendation:hover {
+  color: rgb(126, 128, 124);
 }
 
 .logout {
@@ -625,4 +631,8 @@ ul {
 }
 #titleRecom {
   text-transform: uppercase;
+}
+html {
+  background-image: url(../src/fotos/fondolimpio2.png);
+  background-repeat: repeat;
 }
