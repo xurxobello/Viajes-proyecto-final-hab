@@ -3,7 +3,7 @@ import useRecommendations from "../hooks/useRecommendations";
 
 function HomePage() {
   // Importamos el Hook useRecommendations, que se encarga, entre otras cosas, de hacer una petición al API para obtener las recomendaciones
-  const { recommendations, setRecommendations, loading, error } =
+  const { recommendations, setRecommendations, next, prev, loading, error } =
     useRecommendations();
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
@@ -20,6 +20,8 @@ function HomePage() {
         <RecommendationsList
           recommendations={recommendations}
           setRecommendations={setRecommendations}
+          nextPage={next}
+          prevPage={prev}
         />
       </section>
     </main>
