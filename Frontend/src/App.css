@@ -503,6 +503,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem;
 }
 #filter {
   padding: 0.5rem;
@@ -641,5 +642,10 @@ html {
   background-repeat: repeat;
 }
 .divCom {
-  overflow: auto;
+  overflow: hidden;
+}
+.buttonpage {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }

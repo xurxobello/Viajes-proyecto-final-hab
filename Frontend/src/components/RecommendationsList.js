@@ -95,12 +95,14 @@ function RecommendationsList({
           </form>
         </>
       ) : null}
-      <button onClick={(e) => handleForm(e, prev)} disabled={!prev ?? true}>
-        prev
-      </button>
-      <button onClick={(e) => handleForm(e, next)} disabled={!next ?? true}>
-        next
-      </button>
+      <div className="buttonpage">
+        <button onClick={(e) => handleForm(e, prev)} disabled={!prev ?? true}>
+          prev
+        </button>
+        <button onClick={(e) => handleForm(e, next)} disabled={!next ?? true}>
+          next
+        </button>
+      </div>
       <h3 className="h3HomePage">Recommendations</h3>
 
       <ul className="recommendationsList">
