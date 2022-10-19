@@ -3,12 +3,17 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { sendAvatarService } from "../services";
 
-function ModifyAvatar() {
+function ModifyAvatar({ caption }) {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(caption);
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
+
+  const style = {
+    fontSize: "25px",
+    marginTop: "20px",
+  };
 
   // definimos la manera de gestionar el formulario
   const handleForm = async (e) => {
@@ -34,23 +39,33 @@ function ModifyAvatar() {
   };
 
   return user && user.id === +id ? (
-    <form className="formModifyAvatar" onSubmit={handleForm}>
-      <label htmlFor="image">Change your avatar: </label>
-      <input
-        type="file"
-        id="image"
-        name="avatar"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-        required
-      />
+    <>
+      <p style={style}>Avatar:</p>
+      {user.avatar ? (
+        <img
+          className="imgRedonda"
+          src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
+          alt="No hay foto de perfil"
+        />
+      ) : null}
+      <form className="formModifyAvatar" onSubmit={handleForm}>
+        <label htmlFor="image">Change your avatar: </label>
+        <input
+          type="file"
+          id="image"
+          name="avatar"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+          required
+        />
 
-      {sending ? <p>ESending form...</p> : null}
-      {error ? <p>{error}</p> : null}
-      <div className="form_button1">
-        <input type="submit" value="Change avatar" id="form_button" />
-      </div>
-    </form>
+        {sending ? <p>ESending form...</p> : null}
+        {error ? <p>{error}</p> : null}
+        <div className="form_button1">
+          <input type="submit" value="Change avatar" id="form_button" />
+        </div>
+      </form>
+    </>
   ) : null;
 }
 

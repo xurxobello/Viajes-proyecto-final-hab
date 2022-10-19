@@ -32,24 +32,9 @@ function UserPage() {
           User created: {new Date(user.created_at).toLocaleString()}
         </p>
 
-        <p style={style}>Avatar:</p>
-        {user.avatar ? (
-          <img
-            className="imgRedonda"
-            src={`${process.env.REACT_APP_BACKEND}/upload/avatar/${user.id}/${user.avatar}`}
-            alt="No hay foto de perfil"
-          />
-        ) : null}
-
-        <ModifyAvatar />
-        <p className="userName" style={styleLetra}>
-          Name: {user.name}
-        </p>
-        <ModifyName />
-        <p className="userAboutMe" style={styleLetra}>
-          About me: {user.about_me}
-        </p>
-        <ModifyAboutMe />
+        <ModifyAvatar caption={user.avatar} />
+        <ModifyName Name={user.name} />
+        <ModifyAboutMe aboutMe={user.about_me} />
       </section>
       <UserRecommendations id={user.id} />
     </main>

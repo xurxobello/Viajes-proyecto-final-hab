@@ -37,11 +37,10 @@ function RecommendationsList({
 
       // definimos los datos recibidos como data que esperarán la respuesta de la base de datos, y pasamos filter y order por si decide pasar algun tipo de filtro en la búsqueda
       const data = await getAllRecommendationsService(filter, order, page);
-      console.log(data);
       setRecommendations(data.recommendations);
       setNext(data.next);
       setPrev(data.prev);
-      /* OJO no comentar */
+      /* OJO no comentar? */
       /* setFilter("");
       setOrder("date"); */
     } catch (error) {
@@ -96,11 +95,19 @@ function RecommendationsList({
         </>
       ) : null}
       <div className="buttonpage">
-        <button onClick={(e) => handleForm(e, prev)} disabled={!prev ?? true}>
-          prev
+        <button
+          className="pagination"
+          onClick={(e) => handleForm(e, prev)}
+          disabled={!prev ?? true}
+        >
+          PREV
         </button>
-        <button onClick={(e) => handleForm(e, next)} disabled={!next ?? true}>
-          next
+        <button
+          className="pagination"
+          onClick={(e) => handleForm(e, next)}
+          disabled={!next ?? true}
+        >
+          NEXT
         </button>
       </div>
       <h3 className="h3HomePage">Recommendations</h3>

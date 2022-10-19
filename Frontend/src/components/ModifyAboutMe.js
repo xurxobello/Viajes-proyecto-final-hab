@@ -1,16 +1,19 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { sendAboutMeService } from "../services";
+import { getMyUserDataService, sendAboutMeService } from "../services";
 
-function ModifyAboutMe() {
+function ModifyAboutMe({ aboutMe }) {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
-  const [about_me, setAbout_me] = useState("");
+  const [about_me, setAbout_me] = useState(aboutMe);
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
   const style = {
     border: "solid",
+  };
+  const styleLetra = {
+    fontSize: "25px",
   };
 
   // definimos la manera de gestionar el formulario
@@ -24,18 +27,24 @@ function ModifyAboutMe() {
 
       // definimos la recomendación que esperará al envío del formulario a la base de datos, para lo que necesita data y token
       await sendAboutMeService({ about_me, token });
+      const data = await getMyUserDataService({ token });
+      setAbout_me(data.about_me);
+      e.target.reset();
     } catch (error) {
       // en caso de que haya un error indicamos que nos facilite dicho error
       setError(error.message);
     } finally {
       // cuando acabe, sea porque todo va bien o haya un error indicamos que el estado de envío pase a false
       setSending(false);
-      window.location.reload();
+      /* window.location.reload(); */
     }
   };
 
   return user && user.id === +id ? (
     <section>
+      <p className="userAboutMe" style={styleLetra}>
+        About me: {about_me}
+      </p>
       <form className="formModifyAboutMe" onSubmit={handleForm}>
         <label htmlFor="about_me">Change about me: </label>
         <input
