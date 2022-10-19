@@ -26,7 +26,6 @@ function useRecommendations(id) {
           : await getAllRecommendationsService();
 
         // si todo va bien nos devuelve las recomendaciones
-        console.log(data);
         setRecommendations(data.recommendations);
         setNext(data.next);
         setPrev(data.prev);

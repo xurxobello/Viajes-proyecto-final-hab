@@ -97,6 +97,7 @@ function DetailRecommendation({ recommendation }) {
         <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
           <img
+            className="imgDetail"
             src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
             alt={recommendation.intro}
           />
@@ -117,6 +118,7 @@ function DetailRecommendation({ recommendation }) {
         <p>Place: {recommendation.place}</p>
         {recommendation.photo ? (
           <img
+            className="imgDetail"
             src={`${process.env.REACT_APP_BACKEND}/upload/recommendation/${recommendation.user_id}/${recommendation.photo}`}
             alt={recommendation.intro}
           />
