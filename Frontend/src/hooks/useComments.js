@@ -22,7 +22,6 @@ function useComments() {
         // recuperamos la información de la solicitud enviada a la base de datos, en el caso de recibir una id facilitamos las recomendaciones de un usuario, sino todas las recomendaciones
         const data = await getAllCommentsService(id);
         // si todo va bien nos devuelve las recomendaciones
-        console.log(data);
         setComments(data.comments);
         setNext(data.next);
         setPrev(data.prev);

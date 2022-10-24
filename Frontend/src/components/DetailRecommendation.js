@@ -20,7 +20,6 @@ function DetailRecommendation({
 }) {
   const { id } = useParams();
   const [likes, setLikes] = useState([]);
-  /* const [comments, setComments] = useState([]); */
   const { user, token } = useContext(AuthContext);
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
@@ -44,18 +43,6 @@ function DetailRecommendation({
     };
     getLikesData();
   }, []);
-
-  /* useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const data = await getAllCommentsService({ id });
-        setComments(data.comments);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUserData();
-  }, [likes]); */
 
   const handleLike = async (e) => {
     try {
