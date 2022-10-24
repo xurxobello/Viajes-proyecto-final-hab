@@ -22,4 +22,4 @@ Implementar una API que permita gestionar un portal donde los usuarios puedan pu
 ## EXTRAS NO SOLICITADOS:
 - Iniciar BBDD con datos aleatorios ✔️
 - Enviar emails mediante Mailgun al dar de alta una cuenta (creamos la cuenta augustproject@yopmail.com para hacer pruebas) ✔️
-- Paginación :construction::rotating_light::construction::rotating_light::construction: (en construcción, funcionando en backend pero no en frontend)
+- Paginación ✔️
