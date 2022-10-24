@@ -24,7 +24,6 @@ function useRecommendations(id) {
         const data = id
           ? await getAllUserRecommendationsService(id)
           : await getAllRecommendationsService();
-
         // si todo va bien nos devuelve las recomendaciones
         setRecommendations(data.recommendations);
         setNext(data.next);

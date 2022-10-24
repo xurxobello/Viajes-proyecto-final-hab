@@ -55,39 +55,17 @@ async function getComments(req, res) {
       lastPage,
       page,
       // creamos un enlace para ir a la primera página
-      goToFirstPage:
-        page > 1
-          ? `http://${
-              req.headers.host
-            }/api/recommendation/${recommendationId}/allcomments?page=${1}`
-          : null,
+      goToFirstPage: page > 1 ? `1` : null,
 
       //Usamos un ternario para devolver la página anterior sólo si no es la primera y para devolver la página siguiente sólo si no es la última. OJO que el valor de la query (page) es un string!
       //${req.headers.host}
-      prev:
-        page > 1
-          ? `http://${
-              req.headers.host
-            }/api/recommendation/${recommendationId}/allcomments?page=${
-              +page - 1
-            }`
-          : null,
+      prev: page > 1 ? `${+page - 1}` : null,
 
       // Hay siguiente si no es la ultima
-      next:
-        page < lastPage
-          ? `http://${
-              req.headers.host
-            }/api/recommendation/${recommendationId}/allcomments?page=${
-              +page + 1
-            }`
-          : null,
+      next: page < lastPage ? `${+page + 1}` : null,
 
       // creamos un enlace para ir a la última página
-      goToLastPage:
-        page < lastPage
-          ? `http://${req.headers.host}/api/recommendation/${recommendationId}/allcomments?page=${lastPage}`
-          : null,
+      goToLastPage: page < lastPage ? `${lastPage}` : null,
 
       comments: result[0],
     };

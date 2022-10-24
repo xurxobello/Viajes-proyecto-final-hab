@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { getAllRecommendationsService } from "../services";
+import {
+  getAllRecommendationsService,
+  getAllUserRecommendationsService,
+} from "../services";
 import Recommendation from "./Recommendation";
 
 // creamos el componente RecommendationsList que recibe una prop con las recomendaciones
@@ -36,7 +39,9 @@ function RecommendationsList({
       setSending(true);
 
       // definimos los datos recibidos como data que esperarán la respuesta de la base de datos, y pasamos filter y order por si decide pasar algun tipo de filtro en la búsqueda
-      const data = await getAllRecommendationsService(filter, order, page);
+      const data = id
+        ? await getAllUserRecommendationsService(id, page)
+        : await getAllRecommendationsService(filter, order, page);
       setRecommendations(data.recommendations);
       setNext(data.next);
       setPrev(data.prev);
@@ -94,6 +99,7 @@ function RecommendationsList({
           </form>
         </>
       ) : null}
+      <h3 className="h3HomePage">Recommendations</h3>
       <div className="buttonpage">
         <button
           className="pagination"
@@ -110,7 +116,6 @@ function RecommendationsList({
           NEXT
         </button>
       </div>
-      <h3 className="h3HomePage">Recommendations</h3>
 
       <ul className="recommendationsList">
         {recommendations.map((recommendation) => {

@@ -15,7 +15,7 @@ function UserPage() {
   };
   const { id } = useParams();
 
-  // Importamos el Hook, que se encarga, entre otras cosas, de hacer una petición al API para obtener las información
+  // Importamos el Hook, que se encarga, entre otras cosas, de hacer una petición al API para obtener la información
   const { user, loading, error } = useUser(id);
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo

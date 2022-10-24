@@ -46,7 +46,7 @@ function CreateRecommendation() {
   // a continuación del campo para la imagen vamos a hacer una previsualización de la misma en caso de estar cargada, para ello, en el campo de la imagen indicamos que si hay algún cambio (onChange) nos lo muestre y para poder ver dicha imagen debe acceder a e.target.files[0] ya que es la imagen que acabamos de escoger, e.target es la referencia al input, e.target.files es la colección de ficheros que hay metidos en un input de tipo imagen y [0] porque permitimos una única imagen. Volviendo de nuevo al campo de la previsualización, mediante src={URL.createObjectURL(image)} aceptamos un objeto de tipo file y creamos una representación de URL de ello.
   return (
     <div className="container">
-      <form onSubmit={handleForm}>
+      <form id="container" onSubmit={handleForm}>
         <div>
           <label htmlFor="title">Title: </label>
           <input
@@ -63,12 +63,12 @@ function CreateRecommendation() {
             <option value="" hidden>
               Select...
             </option>
-            <option value="TurismoSolPlaya">Sun and beach tourism</option>
-            <option value="TurismoRural">Rural tourism</option>
-            <option value="TurismoGastronómico">Gastronomic tourism</option>
-            <option value="TurismoNaturaleza">Nature tourism</option>
-            <option value="TurismoCultural">Cultural tourism</option>
-            <option value="Otros">Others</option>
+            <option value="Sun and beach tourism">Sun and beach tourism</option>
+            <option value="Rural tourism">Rural tourism</option>
+            <option value="Gastronomic tourism">Gastronomic tourism</option>
+            <option value="Nature tourism">Nature tourism</option>
+            <option value="Cultural tourism">Cultural tourism</option>
+            <option value="Others">Others</option>
           </select>
         </div>
         <div>

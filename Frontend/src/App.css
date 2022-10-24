@@ -32,7 +32,7 @@
   font-size: 20px;
 }
 .h3HomePage {
-  padding-top: 3rem;
+  padding: 1rem 0;
   font-size: 23px;
   text-align: center;
 }
@@ -404,8 +404,8 @@ textarea {
   color: #96b7c4;
 }
 #container {
-  background-color: #dad5d3;
-  border-radius: 10px;
+  background-color: rgba(228, 199, 140, 0.6);
+  border-radius: 1.5rem;
 }
 #form_button1 {
   background: none;
@@ -648,6 +648,7 @@ html {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  padding: 1rem 0;
 }
 .pagination {
   padding: 0.5rem;

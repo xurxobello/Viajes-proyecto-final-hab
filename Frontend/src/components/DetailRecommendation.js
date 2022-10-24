@@ -11,13 +11,22 @@ import {
   likeService,
 } from "../services";
 
-function DetailRecommendation({ recommendation }) {
+function DetailRecommendation({
+  recommendation,
+  comments,
+  setComments,
+  nextPage,
+  prevPage,
+}) {
   const { id } = useParams();
   const [likes, setLikes] = useState([]);
-  const [comments, setComments] = useState([]);
+  /* const [comments, setComments] = useState([]); */
   const { user, token } = useContext(AuthContext);
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
+  const [next, setNext] = useState(nextPage);
+  const [prev, setPrev] = useState(prevPage);
   const navigate = useNavigate();
   const style = {
     color: "blue",
@@ -36,7 +45,7 @@ function DetailRecommendation({ recommendation }) {
     getLikesData();
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const getUserData = async () => {
       try {
         const data = await getAllCommentsService({ id });
@@ -46,7 +55,7 @@ function DetailRecommendation({ recommendation }) {
       }
     };
     getUserData();
-  }, [likes]);
+  }, [likes]); */
 
   const handleLike = async (e) => {
     try {
@@ -86,6 +95,28 @@ function DetailRecommendation({ recommendation }) {
       await deleteRecommendationService({ id, token });
     } catch (error) {
       setError(error.message);
+    }
+  };
+
+  const handleForm = async (e, page) => {
+    // no permitimos que se envíe el formulario de forma normal con e.preventDefault()
+    e.preventDefault();
+
+    try {
+      // en caso de que todo vaya bien indicamos que el estado de envío pase a true
+      setSending(true);
+
+      // definimos los datos recibidos como data que esperarán la respuesta de la base de datos
+      const data = await getAllCommentsService(id, page);
+      setComments(data.comments);
+      setNext(data.next);
+      setPrev(data.prev);
+    } catch (error) {
+      // en caso de que haya un error indicamos que nos facilite dicho error
+      setError(error.message);
+    } finally {
+      // cuando acabe, sea porque todo va bien o haya un error indicamos que el estado de envío pase a false
+      setSending(false);
     }
   };
 
@@ -172,8 +203,22 @@ function DetailRecommendation({ recommendation }) {
       </form>
       <div className="divCom">
         <p>COMMENTS</p>
-        <br />
-        <br />
+        <div className="buttonpage">
+          <button
+            className="pagination"
+            onClick={(e) => handleForm(e, prev)}
+            disabled={!prev ?? true}
+          >
+            PREV
+          </button>
+          <button
+            className="pagination"
+            onClick={(e) => handleForm(e, next)}
+            disabled={!next ?? true}
+          >
+            NEXT
+          </button>
+        </div>
         <ul className="container">
           {comments.map((comment) => {
             return (
