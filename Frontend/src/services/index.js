@@ -143,10 +143,10 @@ export const commentUserService = async ({ content, id, token }) => {
   //pendiente de meterle un error si no deja crearla
 };
 
-export const getAllCommentsService = async ({ id }) => {
+export const getAllCommentsService = async (id, page) => {
   //peticion a la bd para detalles del usuario-->id,nick email...
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendation/${id}/allcomments`,
+    `${process.env.REACT_APP_BACKEND}/api/recommendation/${id}/allcomments?page=${page}`,
     {
       method: "GET",
       headers: {
@@ -223,9 +223,9 @@ export const getLikesRecommendationService = async ({ id }) => {
 };
 
 // esta función se encarga de la petición mediante fetch a la base de datos para obtener las recomendaciones creadas
-export const getAllUserRecommendationsService = async (id) => {
+export const getAllUserRecommendationsService = async (id, page = 1) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/recommendations/user/${id}`
+    `${process.env.REACT_APP_BACKEND}/api/recommendations/user/${id}?page=${page}`
   );
   // gestionamos la respuesta de la base de datos transformándola a json
   const json = await response.json();

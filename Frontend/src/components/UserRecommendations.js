@@ -2,7 +2,8 @@ import useRecommendations from "../hooks/useRecommendations";
 import RecommendationsList from "./RecommendationsList";
 
 export const UserRecommendations = ({ id }) => {
-  const { recommendations, loading, error } = useRecommendations(id);
+  const { recommendations, setRecommendations, next, prev, loading, error } =
+    useRecommendations(id);
 
   // indicamos que mientras carga nos devuelva un mensaje indicándolo
   if (loading) return <p>Loading...</p>;
@@ -14,7 +15,12 @@ export const UserRecommendations = ({ id }) => {
   return (
     <>
       <section>
-        <RecommendationsList recommendations={recommendations} />
+        <RecommendationsList
+          recommendations={recommendations}
+          setRecommendations={setRecommendations}
+          nextPage={next}
+          prevPage={prev}
+        />
       </section>
     </>
   );

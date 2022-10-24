@@ -25,7 +25,7 @@ function CreateRecommendationPage() {
               {" "}
               here{" "}
             </NavLink>
-            to log in.
+            to login.
           </p>
         )}
       </section>
