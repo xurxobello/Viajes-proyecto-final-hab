@@ -658,4 +658,5 @@ html {
 }
 .imgDetail {
   border-radius: 1.5rem;
+  max-width: 85%;
 }

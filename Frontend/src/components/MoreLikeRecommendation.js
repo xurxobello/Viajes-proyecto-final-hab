@@ -1,13 +1,9 @@
 import corazon from "../fotos/corazon.svg";
 function MoreLikeRecommendation({ recommendation }) {
-  const style = {
-    fontSize: "20px",
-    textTransform: "uppercase",
-  };
   // creamos un componente que se va a encargar de mostrar la recomendación con los datos que queremos, en este caso la foto, la categoría y una introducción.
   return (
     <article className="resumeRecommendation">
-      <p style={style}>{recommendation.title}</p>
+      <h2 id="titleRecom">{recommendation.title}</h2>
       {recommendation.photo ? (
         <img
           className="imgRecommendation"
