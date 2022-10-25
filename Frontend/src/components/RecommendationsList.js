@@ -106,14 +106,14 @@ function RecommendationsList({
           onClick={(e) => handleForm(e, prev)}
           disabled={!prev ?? true}
         >
-          PREV
+          Prev
         </button>
         <button
           className="pagination"
           onClick={(e) => handleForm(e, next)}
           disabled={!next ?? true}
         >
-          NEXT
+          Next
         </button>
       </div>
 
